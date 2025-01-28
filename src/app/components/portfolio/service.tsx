@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image'
 
 interface PropServices {
@@ -27,7 +29,7 @@ export default function Service({ services }: PropServices) {
                                                 <Image src={item.source} alt={item.title} key={item.id} width={800} height={800} className='icon' />
                                             </div>
                                             <h6 className="title">{item.title}</h6>
-                                            <ul className="subtitle">
+                                            <ul className="subtitle mt-3">
                                                 {
                                                     item.list_services.map((service, index) => {
                                                         return (

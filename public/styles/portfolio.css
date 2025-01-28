@@ -11553,16 +11553,16 @@ p {
 }
 
 .service-card .body .subtitle {
-    position: absolute;
+    position: relative;
     bottom: -100%;
-    opacity: 0;
-    visibility: hidden;
+    display: none;
     -webkit-transition: all, 0.3s;
     transition: all, 0.3s;
     text-align: start;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+}
+
+.service-card .body ul.subtitle li {
+    margin-top: 5px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -11570,11 +11570,6 @@ p {
         -webkit-transition: none;
         transition: none;
     }
-}
-
-.service-card:hover {
-    min-height: 100%;
-    transition: all, 0.5s;
 }
 
 .service-card:hover .body img.icon {
@@ -11586,7 +11581,7 @@ p {
 .service-card:hover .body .subtitle {
     bottom: 7px;
     opacity: 1;
-    visibility: visible;
+    display: block;
 }
 
 /*/ portfolio wrapper */
