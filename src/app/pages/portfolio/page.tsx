@@ -8,8 +8,8 @@ import ContactMe from '@/app/components/portfolio/contact';
 import Footer from '@/app/components/portfolio/footer';
 import Tools from '@/app/components/portfolio/tool';
 
-export default function Portfolio() {
-    const contents = [
+function getNavbarContents() {
+    const nav_contents = [
         { id: 1, title: 'About', link: '#about' },
         { id: 2, title: 'Services', link: '#services' },
         { id: 3, title: 'Tools', link: '#tools' },
@@ -17,6 +17,10 @@ export default function Portfolio() {
         { id: 5, title: 'Contact Me', link: '#contact' },
     ];
 
+    return nav_contents
+}
+
+function getServices() {
     const services = [
         {
             id: 1, title: 'Website Development', list_services: [
@@ -37,16 +41,39 @@ export default function Portfolio() {
         },
     ];
 
+    return services;
+}
+
+function getTools() {
     const tools = [
-        { id: 1, title: 'web', icon_source: '/images/profil_robanu dakhayin.png' },
-        { id: 2, title: 'web', icon_source: '/images/profil_robanu dakhayin.png' },
+        { id: 1, title: 'React JS', icon_source: '/icons/React.png' },
+        { id: 2, title: 'Laravel', icon_source: '/icons/Laravel.png' },
+        { id: 3, title: 'CodeIgniter', icon_source: '/icons/Codeigniter.png' },
+        { id: 4, title: 'Flutter', icon_source: '/icons/Flutter.png' },
+        { id: 5, title: 'MySql', icon_source: '/icons/MySql.png' },
+        { id: 6, title: 'PHP', icon_source: '/icons/PHP.png' },
+        { id: 7, title: 'Dart', icon_source: '/icons/Dart.png' },
+        { id: 8, title: 'Javascript', icon_source: '/icons/Javascript.png' },
+        { id: 9, title: 'Typescript', icon_source: '/icons/Typescript.png' },
+        { id: 10, title: 'CSS', icon_source: '/icons/CSS.png' },
+        { id: 11, title: 'HTML', icon_source: '/icons/HTML.png' },
+        { id: 12, title: 'Git', icon_source: '/icons/GIT.png' },
+        { id: 13, title: 'Tortoise SVN', icon_source: '/icons/SVN.png' },
     ];
 
+    return tools;
+}
+
+function getProjectCategories() {
     const project_categories = [
         { id: 1, name: 'web' },
         { id: 2, name: 'mobile' },
     ];
 
+    return project_categories
+}
+
+function getProjects() {
     const projects = [
         { id: 1, project_category_id: 1, title: 'project1', description: 'project1', image_sources: ['/images/profil_robanu dakhayin.png'] },
         { id: 2, project_category_id: 1, title: 'project1', description: 'project1', image_sources: ['/images/profil_robanu dakhayin.png'] },
@@ -55,6 +82,20 @@ export default function Portfolio() {
         { id: 5, project_category_id: 2, title: 'project1', description: 'project1', image_sources: ['/images/profil_robanu dakhayin.png'] },
         { id: 6, project_category_id: 2, title: 'project1', description: 'project1', image_sources: ['/images/profil_robanu dakhayin.png'] },
     ];
+
+    return projects;
+}
+
+export default function Portfolio() {
+    const contents = getNavbarContents();
+
+    const services = getServices();
+
+    const tools = getTools();
+
+    const project_categories = getProjectCategories();
+    
+    const projects = getProjects();;
 
     return (
         <>

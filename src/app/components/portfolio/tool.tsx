@@ -19,10 +19,10 @@ export default function Tools({ tools }: PropsTools) {
                     {
                         tools.map((item) => {
                             return (
-                                <div key={item.id} className="col-md-6 col-lg-3">
-                                    <div className="service-card">
+                                <div key={item.id} className="col-md-6 col-lg-2 mt-4">
+                                    <div className="d-flex justify-content-center">
                                         <div className="body">
-                                            <Image src={item.icon_source} alt={item.title} key={item.id} width={10} height={10} className="icon" />
+                                            <Image src={item.icon_source} alt={item.title} key={item.id} width={100} height={100} className="icon" />
                                             <h6 className="title">{item.title}</h6>
                                         </div>
                                     </div>
