@@ -42,7 +42,7 @@ export default function Navbar({ contents }: PropsNavbar) {
     AnimateScroll(setScroll);
 
     return (
-        <nav className={`custom-navbar ${is_scrolled ? 'scrolled' : 'unscrolled'} ${is_active ? 'show' : ''}`} data-spy="affix" data-offset-top="20">
+        <nav className={`custom-navbar ${is_scrolled ? 'scrolled' : 'unscrolled'} ${is_active ? 'show' : ''} ${is_active && is_scrolled? 'shadow-md' : ''}`} data-spy="affix" data-offset-top="20">
             <div className="container">
                 <ul className={`nav ${is_active ? 'show' : ''}`}>
                     {
