@@ -12971,6 +12971,10 @@ pre .code {
     padding: 100px 0 !important;
 }
 
+.gap-default {
+    gap: 5px;
+}
+
 /* For dark theme */
 /* Belum dibuat, untuk saat ini masih memerlukan !important */
 @media (prefers-color-scheme: dark) {
