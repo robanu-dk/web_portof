@@ -1,70 +1,85 @@
+'use client';
+
 import Image from 'next/image';
+import { useState } from 'react';
 
 interface PropsProjects {
-    project_categories: {
-        id: number,
-        name: string,
-    }[],
     projects: {
         id: number,
-        project_category_id: number,
+        project_category: string,
         title: string,
         description: string,
-        image_sources: string[],
+        framework: string | null,
+        jobdesc: string | null,
+        list_jobdescs: string[] | null,
+        documentation: {
+            id: number,
+            description: string,
+            image_source: string,
+        }[],
     }[],
 }
 
-function ProjectsSection(project: {
-    id: number,
-    project_category_id: number,
-    title: string,
-    description: string,
-    image_sources: string[],
-}, project_category_name: string, key: number | string) {
-    return (
-        <div key={`project-${key}`} className="col-md-4">
-            <a href="#" className="portfolio-card">
-                <Image src={project.image_sources[0]} width={60} height={60} alt={project.title} />
-                <span className="portfolio-card-overlay">
-                    <span className="portfolio-card-caption">
-                        <h4>{project.title}</h4>
-                        <p className="font-weight-normal">Category: {project_category_name}</p>
-                    </span>
-                </span>
-            </a>
-        </div>
-    );
-}
+function ProjectDocumentationCarousel(project_documentations: { id: number, description: string, image_source: string }[]) {
+    const [show, setShow] = useState(0);
 
-function ProjectsCategorySection(project_category: {
-    id: number,
-    name: string,
-}, projects: PropsProjects['projects'], key: number | string) {
+    const nextSlide = () => {
+        setShow(show == (project_documentations.length - 1) ? 0 : show + 1);
+    }
+
+    const previousSlide = () => {
+        setShow(show == 0 ? (project_documentations.length - 1) : show - 1);
+    }
+
+    const handleIndicatorClick = (index: number) => {
+        setShow(index);
+    }
+
     return (
-        <div key={`project-category-${key}`} className="row">
-            <div className="col-md-4">
-                <a href="#" className="portfolio-card">
-                    <Image src='/images/profil_robanu dakhayin.png' width={60} height={60} alt={project_category.name} />
-                    <span className="portfolio-card-overlay">
-                        <span className="portfolio-card-caption">
-                            <h4>Web Designing</h4>
-                            <p className="font-weight-normal">Category: Web Templates</p>
-                        </span>
-                    </span>
-                </a>
+        <div id="default-carousel" className="relative w-full" data-carousel="slide">
+            {/* <!-- Carousel wrapper --> */}
+            <div className="relative h-full overflow-hidden rounded-lg">
+                {
+                    project_documentations.map((item, index) =>
+                        <div key={index} className={`${show == index? 'transition-opacity duration-700 ease-in-out opacity-100' : 'opacity-0'}`} data-carousel-item>
+                            <p className={`${show != index ? 'hidden' : ''} text-start`}>{item.description}</p>
+                            <Image className={`${show != index ? 'hidden' : ''} relative block w-full rounded-sm`} src={item.image_source} height={4000} width={4000} alt={item.image_source.split('/').reverse()[0]} priority={false} />
+                        </div>
+                    )
+                }
+                {/* <!-- Slider controls --> */}
+                {
+                    project_documentations.length > 1 ? <>
+                        <button type="button" className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" onClick={previousSlide}>
+                            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                <svg className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
+                                </svg>
+                                <span className="sr-only">Previous</span>
+                            </span>
+                        </button>
+                        <button type="button" className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" onClick={nextSlide}>
+                            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                <svg className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
+                                </svg>
+                                <span className="sr-only">Next</span>
+                            </span>
+                        </button>
+                    </> : null
+                }
+                {/* <!-- Slider indicators --> */}
+                <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+                    {
+                        project_documentations.length > 1 ? project_documentations.map((item, index) => <button key={index} type="button" className={`w-3 h-3 rounded-full ${index == show ? 'bg-white' : 'bg-gray-400'}`} aria-current="true" aria-label={`Slide ${index + 1}`} onClick={() => handleIndicatorClick(index)}></button>) : null
+                    }
+                </div>
             </div>
-            {
-                projects.filter((project) => {
-                    return project.project_category_id === project_category.id;
-                }).map((project, index) => {
-                    return ProjectsSection(project, project_category.name, index);
-                })
-            }
         </div>
     );
 }
 
-export default function Projects({ project_categories, projects }: PropsProjects) {
+export default function Projects({ projects }: PropsProjects) {
     return (
         <section className="section" id="projects">
             <div className="container text-center">
@@ -72,9 +87,26 @@ export default function Projects({ project_categories, projects }: PropsProjects
                 <h6 className="section-title mb-6">Portfolio</h6>
                 {/* <!-- row --> */}
                 {
-                    project_categories.map((project_category, index) => {
-                        return ProjectsCategorySection(project_category, projects, index);
-                    })
+                    projects.map((project, key) => <div key={`project-${key}`}>
+                        <div className="card card-projects">
+                            <div className='p-2'>
+                                <h4 className='text-start mb-3'>{project.title}</h4>
+                                <p className='text-start'><b>Description:</b> {project.description}</p>
+                                <p className='text-start'><b>Framework:</b> {project.framework}</p>
+                                <p className='text-start'><b>Jobdesc:</b> {project.jobdesc}</p>
+                                <p className='text-start'><b>List Detail Jobdesc:</b></p>
+                                {
+                                    project.list_jobdescs?.map((jobdesc, index) => <p key={index} className='text-start'>{jobdesc}</p>)
+                                }
+                                <p className='text-start'><b>Documentation:</b></p>
+                                <div id='carousel-section'>
+                                {
+                                    ProjectDocumentationCarousel(project.documentation)
+                                }
+                                </div>
+                            </div>
+                        </div>
+                    </div>)
                 }
                 {/** <!-- end of row --> */}
             </div> {/** <!-- end of container --> */}
