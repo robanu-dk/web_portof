@@ -19,7 +19,7 @@ export default function TechStack({ tech_stacks }: PropsTools) {
                     {
                         tech_stacks.map((item) => {
                             return (
-                                <div key={item.id} className="col-xsm-4 col-sm-4 col-md-3 col-lg-2 mt-4">
+                                <div key={item.id} className="col-xsm-4 col-sm-4 col-md-3 col-lg-2 mt-4 hover:-translate-y-2 hover:shadow-lg">
                                     <div className="d-flex justify-content-center">
                                         <div className="body">
                                             <Image src={item.icon_source} alt={item.title} key={item.id} width={100} height={100} className="icon" />

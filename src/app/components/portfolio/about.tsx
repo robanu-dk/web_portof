@@ -15,7 +15,7 @@ export default function About({ children, cv, image_source }: PropsHeader) {
                 {/* <!-- about wrapper --> */}
                 <div className="about">
                     <div className="about-img-holder">
-                        <Image src={image_source} width={200} height={200} priority={false} alt="Robanu Dakhayin" className="about-img" />
+                        <Image src={image_source} width={200} height={200} priority={false} alt="Robanu Dakhayin" className="about-img shadow-lg" />
                     </div>
                     <div className="about-caption">
                         <p className="section-subtitle">Who Am I ?</p>

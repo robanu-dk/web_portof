@@ -23,7 +23,7 @@ export default function Service({ services }: PropServices) {
                         services.map((item) => {
                             return (
                                 <div key={item.id} className="col-md-6 col-lg-3">
-                                    <div className="service-card">
+                                    <div className="service-card hover:-translate-y-2 hover:shadow-lg">
                                         <div className="body">
                                             <div className='d-flex justify-content-center'>
                                                 <Image src={item.source} alt={item.title} key={item.id} width={800} height={800} className='icon' />
