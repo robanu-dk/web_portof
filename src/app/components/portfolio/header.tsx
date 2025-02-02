@@ -2,7 +2,14 @@
 
 import ScrollToId from "../_custom_hooks/scroll_to_id";
 
-export default function Header() {
+interface HeaderProps {
+    user: {
+        name: string,
+        job: string,
+    },
+}
+
+export default function Header({user} : HeaderProps) {
     // handling navigate scroll
     ScrollToId();
 
@@ -12,9 +19,9 @@ export default function Header() {
             <div className="header-content container">
                 <h1 className="header-title">
                     <span className="up">HI!</span>
-                    <span className="down">I am Robanu Dakhayin</span>
+                    <span className="down">I am {user.name}</span>
                 </h1>
-                <p className="header-subtitle">SOFTWARE ENGINEER</p>
+                <p className="header-subtitle">{user.job.toUpperCase()}</p>
 
                 <a href="#about" className="btn btn-primary">Visit My Profile</a>
             </div>
