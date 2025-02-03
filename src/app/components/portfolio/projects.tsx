@@ -90,7 +90,7 @@ export default function Projects({ projects }: PropsProjects) {
                     projects.map((project, key) => <div key={`project-${key}`}>
                         <div className="card card-projects rounded-sm hover:-translate-y-2 hover:shadow-lg">
                             <div className='p-2'>
-                                <h4 className='text-start mb-3 mt-2'>{project.title}</h4>
+                                <h4 className='text-start mb-3 mt-2'>{project.title} ({project.project_category})</h4>
                                 <p className='text-start font-normal'><b className='font-bold'>Description:</b> {project.description}</p>
                                 <p className='text-start font-normal'><b className='font-bold'>Framework:</b> {project.framework}</p>
                                 <p className='text-start font-normal'><b className='font-bold'>Jobdesc:</b> {project.jobdesc}</p>
