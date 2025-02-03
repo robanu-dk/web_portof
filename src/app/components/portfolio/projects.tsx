@@ -42,7 +42,7 @@ function ProjectDocumentationCarousel(project_documentations: { id: number, desc
                 {
                     project_documentations.map((item, index) =>
                         <div key={index} className={`${show == index ? 'transition-opacity duration-700 ease-in-out opacity-100' : 'opacity-0'}`}>
-                            <p className={`${show != index ? 'hidden' : ''} text-start`}>{item.description}</p>
+                            <p className={`${show != index ? 'hidden' : ''} text-start font-normal`}>{item.description}</p>
                             <Image className={`${show != index ? 'hidden' : ''} relative block w-full rounded-sm`} src={item.image_source} height={4000} width={4000} alt={item.image_source.split('/').reverse()[0]} priority={false} />
                         </div>
                     )
