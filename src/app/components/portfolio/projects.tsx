@@ -42,7 +42,7 @@ function ProjectDocumentationCarousel(project_documentations: { id: number, desc
                 {
                     project_documentations.map((item, index) =>
                         <div key={index} className={`${show == index ? 'transition-opacity duration-700 ease-in-out opacity-100' : 'opacity-0'}`}>
-                            <p className={`${show != index ? 'hidden' : ''} text-start font-normal`}>{item.description}</p>
+                            <p className={`${show != index ? 'hidden' : ''} text-start font-normal text-sm xl:text-base 2xl:text-lg`}>{item.description}</p>
                             <Image className={`${show != index ? 'hidden' : ''} relative block w-full rounded-sm`} src={item.image_source} height={4000} width={4000} alt={item.image_source.split('/').reverse()[0]} priority={false} />
                         </div>
                     )
@@ -84,23 +84,23 @@ export default function Projects({ projects }: PropsProjects) {
         <section className="section" id="projects">
             <div className="container text-center">
                 <p className="section-subtitle">What I Did ?</p>
-                <h6 className="section-title mb-6">Portfolio</h6>
+                <h2 className="section-title mb-6">Projects</h2>
                 {/* <!-- row --> */}
                 {
                     projects.map((project, key) => <div key={`project-${key}`}>
                         <div className="card card-projects rounded-sm hover:-translate-y-2 hover:shadow-lg">
                             <div className='p-2'>
                                 <h4 className='text-start mb-3 mt-2'>{project.title} ({project.project_category})</h4>
-                                <p className='text-start font-normal'><b className='font-bold'>Description:</b> {project.description}</p>
-                                <p className='text-start font-normal'><b className='font-bold'>Framework:</b> {project.framework}</p>
-                                <p className='text-start font-normal'><b className='font-bold'>Jobdesc:</b> {project.jobdesc}</p>
-                                <p className='text-start font-normal'><b className='font-bold'>List Detail Jobdesc:</b></p>
-                                <ol className='list-decimal pl-4 space-y-2'>
+                                <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>Description:</b> {project.description}</p>
+                                <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>Framework:</b> {project.framework}</p>
+                                <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>Jobdesc:</b> {project.jobdesc}</p>
+                                <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>List Detail Jobdesc:</b></p>
+                                <ol className='list-decimal text-sm xl:text-base 2xl:text-lg pl-4 space-y-2'>
                                     {
                                         project.list_jobdescs?.map((jobdesc, index) => <li key={index} className='text-start font-normal'>{jobdesc}</li>)
                                     }
                                 </ol>
-                                <p className='text-start font-normal'><b>Documentation:</b></p>
+                                <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b>Documentation:</b></p>
                                 <div id='carousel-section'>
                                     {
                                         ProjectDocumentationCarousel(project.documentation)

@@ -16,7 +16,7 @@ export default function Service({ services }: PropServices) {
         <section className="section" id="services">
             <div className="container text-center">
                 <p className="section-subtitle">What I Do ?</p>
-                <h6 className="section-title mb-6">Services</h6>
+                <h2 className="section-title mb-6">Services</h2>
                 {/* <!-- row --> */}
                 <div className="row d-flex justify-content-center">
                     {
@@ -29,11 +29,11 @@ export default function Service({ services }: PropServices) {
                                                 <Image src={item.source} alt={item.title} key={item.id} width={800} height={800} className='icon' />
                                             </div>
                                             <h6 className="title">{item.title}</h6>
-                                            <ul className="subtitle mt-3">
+                                            <ul className="subtitle mt-3 mx-4 list-disc">
                                                 {
                                                     item.list_services.map((service, index) => {
                                                         return (
-                                                            <li key={index}>{service}</li>
+                                                            <li key={index} className='font-normal text-sm xl:text-base 2xl:text-lg'>{service}</li>
                                                         );
                                                     })
                                                 }

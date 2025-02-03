@@ -36,7 +36,7 @@ export default function ContactMe() {
         <section className="section" id="contact">
             <div className="container text-center">
                 <p className="section-subtitle">How can you communicate?</p>
-                <h6 className="section-title mb-5">Contact Me</h6>
+                <h2 className="section-title mb-5">Contact Me</h2>
                 {/* <!-- contact form --> */}
                 <form id='contact-me-form' className="contact-form col-md-10 col-lg-8 m-auto">
                     <div className="form-row">

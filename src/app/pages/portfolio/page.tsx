@@ -132,7 +132,7 @@ export default function Portfolio() {
 
             {/* <!-- about section --> */}
             <About image_source='/images/robanu buat cv ats.png' cv='/documents/Robanu Dakhayin-resume.pdf'>
-                <p>Hello! I am Robanu Dakhayin, a Fresh Graduate of Information System who has an interest in data analysis that can be used in collecting information to make a decision. In addition, I am interested in developing mobile and website-based applications that have benefits for stakeholders and the general public.</p>
+                <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'>Hello! I am Robanu Dakhayin, a Fresh Graduate of Information System who has an interest in data analysis that can be used in collecting information to make a decision. In addition, I am interested in developing mobile and website-based applications that have benefits for stakeholders and the general public.</p>
             </About>
             {/** <!-- end of about section --> */}
 

@@ -13,7 +13,7 @@ export default function TechStack({ tech_stacks }: PropsTools) {
         <section className="section" id="tech-stacks">
             <div className="container text-center">
                 <p className="section-subtitle">What I Use ?</p>
-                <h6 className="section-title mb-6">Tech Stacks</h6>
+                <h2 className="section-title mb-6">Tech Stacks</h2>
                 {/* <!-- row --> */}
                 <div className="row">
                     {
