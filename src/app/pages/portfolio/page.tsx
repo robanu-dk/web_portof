@@ -6,13 +6,22 @@ import Service from '@/app/components/portfolio/service';
 import Projects from '@/app/components/portfolio/projects';
 import ContactMe from '@/app/components/portfolio/contact';
 import Footer from '@/app/components/portfolio/footer';
-import Tools from '@/app/components/portfolio/tool';
+import TechStack from '@/app/components/portfolio/tech-stack';
+
+function getUser() {
+    const user = {
+        name: 'Robanu Dakhayin',
+        job: 'SOFTWARE ENGINEER',
+    };
+
+    return user;
+}
 
 function getNavbarContents() {
     const nav_contents = [
         { id: 1, title: 'About', link: '#about' },
         { id: 2, title: 'Services', link: '#services' },
-        { id: 3, title: 'Tools', link: '#tools' },
+        { id: 3, title: 'Tech Stacks', link: '#tech-stacks' },
         { id: 4, title: 'Projects', link: '#projects' },
         { id: 5, title: 'Contact Me', link: '#contact' },
     ];
@@ -44,12 +53,12 @@ function getServices() {
     return services;
 }
 
-function getTools() {
-    const tools = [
-        { id: 1, title: 'React JS', icon_source: '/icons/React.png' },
+function getTechStacks() {
+    const tech_stacks = [
         { id: 2, title: 'Laravel', icon_source: '/icons/Laravel.png' },
         { id: 3, title: 'CodeIgniter', icon_source: '/icons/Codeigniter.png' },
         { id: 4, title: 'Flutter', icon_source: '/icons/Flutter.png' },
+        { id: 1, title: 'React JS', icon_source: '/icons/React.png' },
         { id: 5, title: 'MySql', icon_source: '/icons/MySql.png' },
         { id: 6, title: 'PHP', icon_source: '/icons/PHP.png' },
         { id: 7, title: 'Dart', icon_source: '/icons/Dart.png' },
@@ -61,40 +70,54 @@ function getTools() {
         { id: 13, title: 'Tortoise SVN', icon_source: '/icons/SVN.png' },
     ];
 
-    return tools;
-}
-
-function getProjectCategories() {
-    const project_categories = [
-        { id: 1, name: 'web' },
-        { id: 2, name: 'mobile' },
-    ];
-
-    return project_categories
+    return tech_stacks;
 }
 
 function getProjects() {
     const projects = [
-        { id: 1, project_category_id: 1, title: 'project1', description: 'project1', image_sources: ['/images/profil_robanu dakhayin.png'] },
-        { id: 2, project_category_id: 1, title: 'project1', description: 'project1', image_sources: ['/images/profil_robanu dakhayin.png'] },
-        { id: 3, project_category_id: 1, title: 'project1', description: 'project1', image_sources: ['/images/profil_robanu dakhayin.png'] },
-        { id: 4, project_category_id: 1, title: 'project1', description: 'project1', image_sources: ['/images/profil_robanu dakhayin.png'] },
-        { id: 5, project_category_id: 2, title: 'project1', description: 'project1', image_sources: ['/images/profil_robanu dakhayin.png'] },
-        { id: 6, project_category_id: 2, title: 'project1', description: 'project1', image_sources: ['/images/profil_robanu dakhayin.png'] },
+        {
+            id: 1,
+            project_category: 'Web Development',
+            title: 'JIMMONSHOP',
+            description: `
+            A website that functions to assist the online sales 
+            process for BUMJ in the JIMM FST Universitas Airlangga organization. Includes managing product data to be sold such as adding 
+            new products, updating products, checking sales data for each product, managing orders; and purchasing products.
+            `,
+            framework: 'Laravel 10',
+            jobdesc: 'FullStack',
+            list_jobdescs: [
+                'Design Database',
+                'Frontend Programming',
+                'Backend Programming',
+            ],
+            documentation: [
+                {
+                    id: 1,
+                    description: 'Lorem ipsum',
+                    image_source: '/projects/jimmonshop/Login Page.png',
+                },
+                {
+                    id: 2,
+                    description: 'Lorem ipsum 2',
+                    image_source: '/projects/jimmonshop/About Us Page.png',
+                },
+            ]
+        },
     ];
 
     return projects;
 }
 
 export default function Portfolio() {
+    const user = getUser();
+
     const contents = getNavbarContents();
 
     const services = getServices();
 
-    const tools = getTools();
+    const tech_stacks = getTechStacks();
 
-    const project_categories = getProjectCategories();
-    
     const projects = getProjects();;
 
     return (
@@ -104,7 +127,7 @@ export default function Portfolio() {
             {/** <!-- End of Page Navbar --> */}
 
             {/* <!-- page header --> */}
-            <Header />
+            <Header user={user} />
             {/* <!-- end of page header --> */}
 
             {/* <!-- about section --> */}
@@ -118,11 +141,11 @@ export default function Portfolio() {
             {/* </section><!-- end of services section --> */}
 
             {/* <!-- tools section --> */}
-            <Tools tools={tools} />
+            <TechStack tech_stacks={tech_stacks} />
             {/* </section><!-- end of tools section --> */}
 
             {/* <!-- projects section --> */}
-            <Projects projects={projects} project_categories={project_categories} />
+            <Projects projects={projects} />
             {/** <!-- end of projects section --> */}
 
             {/* <!-- contact section --> */}
