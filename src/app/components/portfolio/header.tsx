@@ -11,7 +11,7 @@ interface HeaderProps {
 
 export default function Header({user} : HeaderProps) {
     // handling navigate scroll
-    ScrollToId();
+    ScrollToId('about-header');
 
     return (
         <header id="home" className="header">
@@ -23,7 +23,7 @@ export default function Header({user} : HeaderProps) {
                 </h1>
                 <p className="header-subtitle">{user.job.toUpperCase()}</p>
 
-                <a href="#about" className="btn btn-primary">Visit My Profile</a>
+                <a id="about-header" href="#about" className="btn btn-primary">Visit My Profile</a>
             </div>
         </header>
     );

@@ -19,11 +19,11 @@ function getUser() {
 
 function getNavbarContents() {
     const nav_contents = [
-        { id: 1, title: 'About', link: '#about' },
-        { id: 2, title: 'Services', link: '#services' },
-        { id: 3, title: 'Tech Stacks', link: '#tech-stacks' },
-        { id: 4, title: 'Projects', link: '#projects' },
-        { id: 5, title: 'Contact Me', link: '#contact' },
+        { id: 'about-nav', title: 'About', link: '#about' },
+        { id: 'services-nav', title: 'Services', link: '#services' },
+        { id: 'tech-stacks-nav', title: 'Tech Stacks', link: '#tech-stacks' },
+        { id: 'projects-nav', title: 'Projects', link: '#projects' },
+        { id: 'contact-nav', title: 'Contact Me', link: '#contact' },
     ];
 
     return nav_contents

@@ -4,23 +4,23 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import ScrollToId from "../_custom_hooks/scroll_to_id";
 
 interface PropsNavbar {
-    contents: { id: number, title: string, link: string }[],
+    contents: { id: string, title: string, link: string }[],
 };
 
 // handle scroll
 function AnimateScroll(setScroll: Dispatch<SetStateAction<boolean>>) {
-    // handlinig when click navbar item
-    ScrollToId();
-
     useEffect(() => {
+        // handle scroll
+        const handleScroll = () => {
+            setScroll(window.scrollY > 0);
+        }
+
         // handling navbar style when scroll
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 0) {
-                setScroll(true);
-            } else {
-                setScroll(false)
-            }
-        });
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
     });
 }
 
@@ -32,7 +32,7 @@ export default function Navbar({ contents }: PropsNavbar) {
     const [is_scrolled, setScroll] = useState(false);
 
     // function to handle hamburger button
-    const handleClick = function (e: { preventDefault: () => void; }) {
+    const handleClick = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
 
         setActive(!is_active);
@@ -41,15 +41,19 @@ export default function Navbar({ contents }: PropsNavbar) {
     // add animate scroll
     AnimateScroll(setScroll);
 
+    // handlinig when click navbar item
+    const nav_id = contents.map((content) => content.id);
+    ScrollToId(nav_id);
+
     return (
-        <nav className={`custom-navbar ${is_scrolled ? 'scrolled' : 'unscrolled'} ${is_active ? 'show' : ''} ${is_active && is_scrolled? 'shadow-md' : ''}`} data-spy="affix" data-offset-top="20">
+        <nav className={`custom-navbar ${is_scrolled ? 'scrolled' : 'unscrolled'} ${is_active ? 'show' : ''} ${is_active && is_scrolled ? 'shadow-md' : ''}`} data-spy="affix" data-offset-top="20">
             <div className="container">
                 <ul className={`nav ${is_active ? 'show' : ''}`}>
                     {
-                        contents.map((item: { id: number, title: string, link: string }) => {
+                        contents.map((item: { id: string, title: string, link: string }) => {
                             return (
-                                <li key={`${item.id}`} className="item">
-                                    <a className="link" href={item.link}>{item.title}</a>
+                                <li key={item.id} className="item">
+                                    <a id={item.id} className="link" href={item.link}>{item.title}</a>
                                 </li>
                             );
                         })
