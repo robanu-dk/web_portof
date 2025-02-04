@@ -3,8 +3,14 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import ScrollToId from "../_custom_hooks/scroll_to_id";
 
-interface PropsNavbar {
-    contents: { id: string, title: string, link: string }[],
+interface ContentProps {
+    id: string,
+    title: string,
+    link: string,
+}
+
+interface NavbarProps {
+    contents: ContentProps[],
 };
 
 // handle scroll
@@ -24,7 +30,7 @@ function AnimateScroll(setScroll: Dispatch<SetStateAction<boolean>>) {
     });
 }
 
-export default function Navbar({ contents }: PropsNavbar) {
+export default function Navbar({ contents }: NavbarProps) {
     // create hook to identify navbar is active or not
     const [is_active, setActive] = useState(false);
 
@@ -68,3 +74,5 @@ export default function Navbar({ contents }: PropsNavbar) {
         </nav>
     )
 }
+
+export type { ContentProps };

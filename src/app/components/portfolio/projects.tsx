@@ -3,21 +3,23 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-interface PropsProjects {
-    projects: {
+interface ProjectProps {
+    id: number,
+    project_category: string,
+    title: string,
+    description: string,
+    framework: string | null,
+    jobdesc: string | null,
+    list_jobdescs: string[] | null,
+    documentation: {
         id: number,
-        project_category: string,
-        title: string,
         description: string,
-        framework: string | null,
-        jobdesc: string | null,
-        list_jobdescs: string[] | null,
-        documentation: {
-            id: number,
-            description: string,
-            image_source: string,
-        }[],
+        image_source: string,
     }[],
+}
+
+interface ProjectsProps {
+    projects: ProjectProps[],
 }
 
 function ProjectDocumentationCarousel(project_documentations: { id: number, description: string, image_source: string }[]) {
@@ -79,7 +81,7 @@ function ProjectDocumentationCarousel(project_documentations: { id: number, desc
     );
 }
 
-export default function Projects({ projects }: PropsProjects) {
+export default function Projects({ projects }: ProjectsProps) {
     return (
         <section className="section" id="projects">
             <div className="container text-center">
@@ -115,3 +117,5 @@ export default function Projects({ projects }: PropsProjects) {
         </section>
     );
 }
+
+export type { ProjectProps };

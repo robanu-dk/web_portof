@@ -1,14 +1,16 @@
 import Image from 'next/image';
 
-interface PropsTools {
-    tech_stacks: {
-        id: number,
-        title: string,
-        icon_source: string,
-    }[],
+interface TechStackProps {
+    id: number,
+    title: string,
+    icon_source: string,
 }
 
-export default function TechStack({ tech_stacks }: PropsTools) {
+interface ToolsProps {
+    tech_stacks: TechStackProps[],
+}
+
+export default function TechStack({ tech_stacks }: ToolsProps) {
     return (
         <section className="section" id="tech-stacks">
             <div className="container text-center">
@@ -35,3 +37,5 @@ export default function TechStack({ tech_stacks }: PropsTools) {
         </section>
     );
 }
+
+export type { TechStackProps };

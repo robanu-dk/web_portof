@@ -1,23 +1,27 @@
+'use client';
+
 import '../../../../public/styles/portfolio.css';
-import Navbar from '@/app/components/portfolio/navbar';
-import Header from '@/app/components/portfolio/header';
+import Navbar, { ContentProps } from '@/app/components/portfolio/navbar';
+import Header, { UserProps } from '@/app/components/portfolio/header';
 import About from '@/app/components/portfolio/about';
-import Service from '@/app/components/portfolio/service';
-import Projects from '@/app/components/portfolio/projects';
+import Service, { ServiceProps } from '@/app/components/portfolio/service';
+import TechStack, { TechStackProps } from '@/app/components/portfolio/tech-stack';
+import Projects, { ProjectProps } from '@/app/components/portfolio/projects';
 import ContactMe from '@/app/components/portfolio/contact';
 import Footer from '@/app/components/portfolio/footer';
-import TechStack from '@/app/components/portfolio/tech-stack';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
-function getUser() {
+function getUser(setUser: Dispatch<SetStateAction<UserProps>>, setUserUpdateStatus: Dispatch<SetStateAction<boolean>>) {
     const user = {
         name: 'Robanu Dakhayin',
         job: 'SOFTWARE ENGINEER',
     };
 
-    return user;
+    setUser(user);
+    setUserUpdateStatus(false);
 }
 
-function getNavbarContents() {
+function getNavbarContents(setNavbarContents: Dispatch<SetStateAction<ContentProps[]>>, setNavbarContentsUpdateStatus: Dispatch<SetStateAction<boolean>>) {
     const nav_contents = [
         { id: 'about-nav', title: 'About', link: '#about' },
         { id: 'services-nav', title: 'Services', link: '#services' },
@@ -26,10 +30,11 @@ function getNavbarContents() {
         { id: 'contact-nav', title: 'Contact Me', link: '#contact' },
     ];
 
-    return nav_contents
+    setNavbarContents(nav_contents);
+    setNavbarContentsUpdateStatus(false);
 }
 
-function getServices() {
+function getServices(setServices: Dispatch<SetStateAction<ServiceProps[]>>, setServicesUpdateStatus: Dispatch<SetStateAction<boolean>>) {
     const services = [
         {
             id: 1, title: 'Website Development', list_services: [
@@ -50,10 +55,11 @@ function getServices() {
         },
     ];
 
-    return services;
+    setServices(services);
+    setServicesUpdateStatus(false);
 }
 
-function getTechStacks() {
+function getTechStacks(setTechStacks: Dispatch<SetStateAction<TechStackProps[]>>, setTechStacksUpdateStatus: Dispatch<SetStateAction<boolean>>) {
     const tech_stacks = [
         { id: 2, title: 'Laravel', icon_source: '/icons/Laravel.png' },
         { id: 3, title: 'CodeIgniter', icon_source: '/icons/Codeigniter.png' },
@@ -70,10 +76,11 @@ function getTechStacks() {
         { id: 13, title: 'Tortoise SVN', icon_source: '/icons/SVN.png' },
     ];
 
-    return tech_stacks;
+    setTechStacks(tech_stacks);
+    setTechStacksUpdateStatus(false);
 }
 
-function getProjects() {
+function getProjects(setprojects: Dispatch<SetStateAction<ProjectProps[]>>, setProjectsUpdateStatus: Dispatch<SetStateAction<boolean>>) {
     const projects = [
         {
             id: 1,
@@ -106,19 +113,53 @@ function getProjects() {
         },
     ];
 
-    return projects;
+    setprojects(projects);
+    setProjectsUpdateStatus(false);
 }
 
 export default function Portfolio() {
-    const user = getUser();
+    const default_user: UserProps = { name: '', job: '' };
 
-    const contents = getNavbarContents();
+    const [user, setUser] = useState(default_user);
+    const [contents, setNavbarContents] = useState<ContentProps[]>([]);
+    const [services, setServices] = useState<ServiceProps[]>([]);
+    const [tech_stacks, setTechStacks] = useState<TechStackProps[]>([]);
+    const [projects, setprojects] = useState<ProjectProps[]>([]);
+    const [is_user_update, setUserUpdateStatus] = useState(true);
+    const [is_contents_update, setContentsUpdateStatus] = useState(true);
+    const [is_services_update, setServicesUpdateStatus] = useState(true);
+    const [is_techStacks_update, setTechStacksUpdateStatus] = useState(true);
+    const [is_projects_update, setProjectsUpdateStatus] = useState(true);
 
-    const services = getServices();
+    useEffect(() => {
+        if (is_user_update) {
+            getUser(setUser, setUserUpdateStatus);
+        }
+    }, [user, is_user_update]);
 
-    const tech_stacks = getTechStacks();
+    useEffect(() => {
+        if (is_contents_update) {
+            getNavbarContents(setNavbarContents, setContentsUpdateStatus);
+        }
+    }, [contents, is_contents_update]);
 
-    const projects = getProjects();;
+    useEffect(() => {
+        if (is_services_update) {
+            getServices(setServices, setServicesUpdateStatus);
+        }
+    }, [services, is_services_update]);
+
+    useEffect(() => {
+        if (is_techStacks_update) {
+            getTechStacks(setTechStacks, setTechStacksUpdateStatus);
+        }
+    }, [tech_stacks, is_techStacks_update]);
+
+    useEffect(() => {
+        if (is_projects_update) {
+            getProjects(setprojects, setProjectsUpdateStatus);
+        }
+    }, [projects, is_projects_update]);
 
     return (
         <>

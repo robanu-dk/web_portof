@@ -2,16 +2,18 @@
 
 import Image from 'next/image'
 
-interface PropServices {
-    services: {
-        id: number,
-        title: string,
-        list_services: string[],
-        source: string,
-    }[],
+interface ServiceProps {
+    id: number,
+    title: string,
+    list_services: string[],
+    source: string,
 }
 
-export default function Service({ services }: PropServices) {
+interface ServicesProps {
+    services: ServiceProps[],
+}
+
+export default function Service({ services }: ServicesProps) {
     return (
         <section className="section" id="services">
             <div className="container text-center">
@@ -49,3 +51,5 @@ export default function Service({ services }: PropServices) {
         </section>
     );
 }
+
+export type { ServiceProps };

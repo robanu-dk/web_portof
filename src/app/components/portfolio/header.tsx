@@ -2,14 +2,16 @@
 
 import ScrollToId from "../_custom_hooks/scroll_to_id";
 
-interface HeaderProps {
-    user: {
-        name: string,
-        job: string,
-    },
+interface UserProps {
+    name: string,
+    job: string,
 }
 
-export default function Header({user} : HeaderProps) {
+interface HeaderProps {
+    user: UserProps,
+}
+
+export default function Header({ user }: HeaderProps) {
     // handling navigate scroll
     ScrollToId('about-header');
 
@@ -28,3 +30,5 @@ export default function Header({user} : HeaderProps) {
         </header>
     );
 }
+
+export type { UserProps };
