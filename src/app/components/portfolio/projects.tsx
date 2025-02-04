@@ -8,9 +8,9 @@ interface ProjectProps {
     project_category: string,
     title: string,
     description: string,
-    framework: string | null,
-    jobdesc: string | null,
-    list_jobdescs: string[] | null,
+    tech_stacks: string | string[],
+    jobdesc: string,
+    list_jobdescs: string | string[],
     documentation: {
         id: number,
         description: string,
@@ -94,14 +94,25 @@ export default function Projects({ projects }: ProjectsProps) {
                             <div className='p-2'>
                                 <h4 className='text-start mb-3 mt-2'>{project.title} ({project.project_category})</h4>
                                 <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>Description:</b> {project.description}</p>
-                                <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>Framework:</b> {project.framework}</p>
+                                <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>Tech Stacks:</b> {typeof(project.tech_stacks) == 'string'? project.tech_stacks : null}</p>
+                                {
+                                    Array.isArray(project.tech_stacks) ?
+                                        <ol className='list-decimal text-sm xl:text-base 2xl:text-lg pl-4 space-y-2'>
+                                            {
+                                                project.tech_stacks?.map((tech_stack, index) => <li key={index} className='text-start font-normal'>{tech_stack}</li>)
+                                            }
+                                        </ol> : null
+                                }
                                 <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>Jobdesc:</b> {project.jobdesc}</p>
-                                <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>List Detail Jobdesc:</b></p>
-                                <ol className='list-decimal text-sm xl:text-base 2xl:text-lg pl-4 space-y-2'>
-                                    {
-                                        project.list_jobdescs?.map((jobdesc, index) => <li key={index} className='text-start font-normal'>{jobdesc}</li>)
-                                    }
-                                </ol>
+                                <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>List Detail Jobdesc:</b> {typeof(project.list_jobdescs) == 'string'? project.list_jobdescs : null}</p>
+                                {
+                                    Array.isArray(project.list_jobdescs) ?
+                                        <ol className='list-decimal text-sm xl:text-base 2xl:text-lg pl-4 space-y-2'>
+                                            {
+                                                project.list_jobdescs?.map((jobdesc, index) => <li key={index} className='text-start font-normal'>{jobdesc}</li>)
+                                            }
+                                        </ol> : null
+                                }
                                 <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b>Documentation:</b></p>
                                 <div id='carousel-section'>
                                     {
