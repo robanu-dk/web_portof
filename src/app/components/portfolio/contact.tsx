@@ -1,36 +1,38 @@
 'use client';
 
-import { useEffect } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 
 const WHATSAPP_URL = 'https://wa.me/+6288228400856';
 
-function SubmitForm() {
+function SubmitForm(ref: RefObject<HTMLFormElement | null>) {
     useEffect(() => {
-        const form = document.getElementById('contact-me-form');
-
-        form?.addEventListener('submit', function (e: { preventDefault: () => void; }) {
+        ref.current?.addEventListener('submit', function (e: { preventDefault: () => void; }) {
             e.preventDefault();
 
-            const data = new FormData(this as HTMLFormElement);
+            if (ref.current != null) {
+                const data = new FormData(ref.current);
 
-            const dataObj: { [key: string]: string } = {};
+                const dataObj: { [key: string]: string } = {};
 
-            data.forEach((value, key) => {
-                dataObj[key as string] = value as string;
-            })
+                data.forEach((value, key) => {
+                    dataObj[key as string] = value as string;
+                })
 
-            const message = `*Nama:* ${dataObj.name}%0A*Pesan:*%0A${dataObj.message}`;
+                const message = `*Nama:* ${dataObj.name}%0A*Pesan:*%0A${dataObj.message}`;
 
-            window.open(`${WHATSAPP_URL}?text=${message}`);
+                window.open(`${WHATSAPP_URL}?text=${message}`);
+            }
         });
     });
 }
 
 export default function ContactMe() {
 
+    const form_ref = useRef<HTMLFormElement | null>(null);
+
     // Function untuk handling submit form
-    SubmitForm();
+    SubmitForm(form_ref);
 
     return (
         <section className="section" id="contact">
@@ -38,7 +40,7 @@ export default function ContactMe() {
                 <p className="section-subtitle">How can you communicate?</p>
                 <h2 className="section-title mb-5">Contact Me</h2>
                 {/* <!-- contact form --> */}
-                <form id='contact-me-form' className="contact-form col-md-10 col-lg-8 m-auto">
+                <form ref={form_ref} id='contact-me-form' className="contact-form col-md-10 col-lg-8 m-auto">
                     <div className="form-row">
                         <div className="form-group col-sm-12">
                             <input name='name' type="text" className="form-control" placeholder="Your Name" required />
