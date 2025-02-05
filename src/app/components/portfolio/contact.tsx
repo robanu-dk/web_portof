@@ -6,24 +6,32 @@ import { FaWhatsapp } from 'react-icons/fa';
 const WHATSAPP_URL = 'https://wa.me/+6288228400856';
 
 function SubmitForm(ref: RefObject<HTMLFormElement | null>) {
+    const form = ref.current;
+
+    const handleSubmit = (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+
+        if (form != null) {
+            const data = new FormData(form);
+
+            const dataObj: { [key: string]: string } = {};
+
+            data.forEach((value, key) => {
+                dataObj[key as string] = value as string;
+            })
+
+            const message = `*Nama:* ${dataObj.name}%0A*Pesan:*%0A${dataObj.message}`;
+
+            window.open(`${WHATSAPP_URL}?text=${message}`);
+        }
+    }
+
     useEffect(() => {
-        ref.current?.addEventListener('submit', function (e: { preventDefault: () => void; }) {
-            e.preventDefault();
+        form?.addEventListener('submit', handleSubmit);
 
-            if (ref.current != null) {
-                const data = new FormData(ref.current);
-
-                const dataObj: { [key: string]: string } = {};
-
-                data.forEach((value, key) => {
-                    dataObj[key as string] = value as string;
-                })
-
-                const message = `*Nama:* ${dataObj.name}%0A*Pesan:*%0A${dataObj.message}`;
-
-                window.open(`${WHATSAPP_URL}?text=${message}`);
-            }
-        });
+        return () => {
+            form?.removeEventListener('submit', handleSubmit);
+        }
     });
 }
 
