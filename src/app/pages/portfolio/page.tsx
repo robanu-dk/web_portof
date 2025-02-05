@@ -17,8 +17,8 @@ function getUser(setUser: Dispatch<SetStateAction<UserProps>>, setUserUpdateStat
         job: 'SOFTWARE ENGINEER',
     };
 
-    setUser(user);
     setUserUpdateStatus(false);
+    setUser(user);
 }
 
 function getNavbarContents(setNavbarContents: Dispatch<SetStateAction<ContentProps[]>>, setNavbarContentsUpdateStatus: Dispatch<SetStateAction<boolean>>) {
@@ -30,8 +30,8 @@ function getNavbarContents(setNavbarContents: Dispatch<SetStateAction<ContentPro
         { id: 'contact-nav', title: 'Contact Me', link: '#contact' },
     ];
 
-    setNavbarContents(nav_contents);
     setNavbarContentsUpdateStatus(false);
+    setNavbarContents(nav_contents);
 }
 
 function getServices(setServices: Dispatch<SetStateAction<ServiceProps[]>>, setServicesUpdateStatus: Dispatch<SetStateAction<boolean>>) {
@@ -55,8 +55,8 @@ function getServices(setServices: Dispatch<SetStateAction<ServiceProps[]>>, setS
         },
     ];
 
-    setServices(services);
     setServicesUpdateStatus(false);
+    setServices(services);
 }
 
 function getTechStacks(setTechStacks: Dispatch<SetStateAction<TechStackProps[]>>, setTechStacksUpdateStatus: Dispatch<SetStateAction<boolean>>) {
@@ -76,8 +76,8 @@ function getTechStacks(setTechStacks: Dispatch<SetStateAction<TechStackProps[]>>
         { id: 13, title: 'Tortoise SVN', icon_source: '/icons/SVN.png' },
     ];
 
-    setTechStacks(tech_stacks);
     setTechStacksUpdateStatus(false);
+    setTechStacks(tech_stacks);
 }
 
 function getProjects(setprojects: Dispatch<SetStateAction<ProjectProps[]>>, setProjectsUpdateStatus: Dispatch<SetStateAction<boolean>>) {
@@ -91,7 +91,7 @@ function getProjects(setprojects: Dispatch<SetStateAction<ProjectProps[]>>, setP
             process for BUMJ in the JIMM FST Universitas Airlangga organization. Includes managing product data to be sold such as adding 
             new products, updating products, checking sales data for each product, managing orders; and purchasing products.
             `,
-            framework: 'Laravel 10',
+            tech_stacks: 'Laravel 10',
             jobdesc: 'FullStack',
             list_jobdescs: [
                 'Design Database',
@@ -113,8 +113,8 @@ function getProjects(setprojects: Dispatch<SetStateAction<ProjectProps[]>>, setP
         },
     ];
 
-    setprojects(projects);
     setProjectsUpdateStatus(false);
+    setprojects(projects);
 }
 
 export default function Portfolio() {
