@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 interface ProjectProps {
     id: number,
@@ -24,35 +24,27 @@ interface ProjectsProps {
 
 function ProjectDocumentationCarousel(project_documentations: { id: number, description: string, image_source: string }[], key: number) {
     const [show, setShow] = useState(0);
-    const next_slide_ref = useRef<HTMLAnchorElement>(null);
-    const previous_slide_ref = useRef<HTMLAnchorElement>(null);
 
-    const scrollTo = (target_scroll: HTMLAnchorElement | string) => {
-        const id_target = typeof(target_scroll) == 'string' ? target_scroll.replaceAll('#','') : target_scroll?.hash.replaceAll('#', '') as string;
+    const scrollTo = (id_target: string) => {
         const target = document.getElementById(id_target);
         window.scrollTo({
-            top: target? target.offsetTop * 1.1 : 0,
+            top: target ? target.offsetTop * 1.1 : 0,
             behavior: 'smooth',
         });
     }
 
-    const nextSlide = (e: { preventDefault: () => void; }) => {
+    const nextSlide = (e: { preventDefault: () => void; }, id_target: string) => {
         e.preventDefault();
         setShow(show == (project_documentations.length - 1) ? 0 : show + 1);
 
-        if (next_slide_ref.current) {
-            scrollTo(next_slide_ref.current);
-        }
+        scrollTo(id_target.replaceAll('#', ''));
     }
 
-    const previousSlide = (e: { preventDefault: () => void; }) => {
+    const previousSlide = (e: { preventDefault: () => void; }, id_target: string) => {
         e.preventDefault();
         setShow(show == 0 ? (project_documentations.length - 1) : show - 1);
 
-        
-        if (previous_slide_ref.current) {
-            scrollTo(previous_slide_ref.current);
-        }
+        scrollTo(id_target.replaceAll('#', ''));
     }
 
     const handleIndicatorClick = (index: number, id_target: string) => {
@@ -76,7 +68,7 @@ function ProjectDocumentationCarousel(project_documentations: { id: number, desc
                 {/* <!-- Slider controls --> */}
                 {
                     project_documentations.length > 1 ? <>
-                        <a ref={previous_slide_ref} href={`#carousel-section-${key}`} type="button" className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" onClick={previousSlide}>
+                        <a href={`#carousel-section-${key}`} type="button" className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" onClick={(e) => { previousSlide(e, `carousel-section-${key}`) }}>
                             <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                                 <svg className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
@@ -84,7 +76,7 @@ function ProjectDocumentationCarousel(project_documentations: { id: number, desc
                                 <span className="sr-only">Previous</span>
                             </span>
                         </a>
-                        <a ref={next_slide_ref} href={`#carousel-section-${key}`} type="button" className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" onClick={nextSlide}>
+                        <a href={`#carousel-section-${key}`} type="button" className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" onClick={(e) => { nextSlide(e, `carousel-section-${key}`) }}>
                             <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                                 <svg className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
