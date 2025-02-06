@@ -25,7 +25,7 @@ export default function ScrollToId(from: string[] | string) {
         const all_href_from: HTMLAnchorElement[] = [];
 
         if (typeof (from) == 'string') {
-            const id_from = from.includes('#') ? from.replaceAll('#', '') : from;
+            const id_from = from.replaceAll('#', '');
             const a_href_from = document.getElementById(id_from) as HTMLAnchorElement;
 
             const handler = addEventListener(a_href_from);
@@ -33,7 +33,7 @@ export default function ScrollToId(from: string[] | string) {
             all_href_from.push(a_href_from);
         } else if (Array.isArray(from)) {
             from.forEach((item) => {
-                const id_from = item.includes('#') ? item.replaceAll('#', '') : item;
+                const id_from = item.replaceAll('#', '');
                 const a_href_from = document.getElementById(id_from) as HTMLAnchorElement;
 
                 const handler = addEventListener(a_href_from);
