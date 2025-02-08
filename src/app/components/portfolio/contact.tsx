@@ -3,9 +3,13 @@
 import { RefObject, useEffect, useRef } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 
-const WHATSAPP_URL = 'https://wa.me/+6288228400856';
+interface ContactProps {
+    whatsapp_no: string,
+}
 
-function SubmitForm(ref: RefObject<HTMLFormElement | null>) {
+const WHATSAPP_URL = 'https://wa.me/';
+
+function SubmitForm(ref: RefObject<HTMLFormElement | null>, whatsapp_no: string) {
     const form = ref.current;
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
@@ -22,7 +26,7 @@ function SubmitForm(ref: RefObject<HTMLFormElement | null>) {
 
             const message = `*Nama:* ${dataObj.name}%0A*Pesan:*%0A${dataObj.message}`;
 
-            window.open(`${WHATSAPP_URL}?text=${message}`);
+            window.open(`${WHATSAPP_URL}${whatsapp_no}?text=${message}`);
         }
     }
 
@@ -35,12 +39,12 @@ function SubmitForm(ref: RefObject<HTMLFormElement | null>) {
     });
 }
 
-export default function ContactMe() {
+export default function ContactMe({ whatsapp_no }: ContactProps) {
 
     const form_ref = useRef<HTMLFormElement | null>(null);
 
     // Function untuk handling submit form
-    SubmitForm(form_ref);
+    SubmitForm(form_ref, whatsapp_no);
 
     return (
         <section className="section" id="contact">
