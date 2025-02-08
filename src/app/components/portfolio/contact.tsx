@@ -73,3 +73,5 @@ export default function ContactMe({ whatsapp_no }: ContactProps) {
         </section>
     );
 }
+
+export type { ContactProps };
