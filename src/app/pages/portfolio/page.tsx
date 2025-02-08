@@ -7,21 +7,30 @@ import About from '@/app/components/portfolio/about';
 import Service, { ServiceProps } from '@/app/components/portfolio/service';
 import TechStack, { TechStackProps } from '@/app/components/portfolio/tech-stack';
 import Projects, { ProjectProps } from '@/app/components/portfolio/projects';
-import ContactMe from '@/app/components/portfolio/contact';
+import ContactMe, { ContactProps } from '@/app/components/portfolio/contact';
 import Footer from '@/app/components/portfolio/footer';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
-function getUser(setUser: Dispatch<SetStateAction<UserProps>>, setUserUpdateStatus: Dispatch<SetStateAction<boolean>>) {
+function getPortFolio(setUser: Dispatch<SetStateAction<UserProps>>, setContact: Dispatch<SetStateAction<ContactProps>>, setPortfolioUpdateStatus: Dispatch<SetStateAction<boolean>>) {
     const user = {
         name: 'Robanu Dakhayin',
         job: 'SOFTWARE ENGINEER',
     };
 
-    setUserUpdateStatus(false);
+    const contact = {
+        whatsapp_no: '6288228400856',
+    }
+
+    setPortfolioUpdateStatus(false);
     setUser(user);
+    setContact(contact);
 }
 
 function getNavbarContents(setNavbarContents: Dispatch<SetStateAction<ContentProps[]>>, setNavbarContentsUpdateStatus: Dispatch<SetStateAction<boolean>>) {
+    // reset data
+    setNavbarContents([]);
+    
+    // get data and set data
     const nav_contents = [
         { id: 'about-nav', title: 'About', link: '#about' },
         { id: 'services-nav', title: 'Services', link: '#services' },
@@ -35,9 +44,15 @@ function getNavbarContents(setNavbarContents: Dispatch<SetStateAction<ContentPro
 }
 
 function getServices(setServices: Dispatch<SetStateAction<ServiceProps[]>>, setServicesUpdateStatus: Dispatch<SetStateAction<boolean>>) {
+    // reset data
+    setServices([]);
+    
+    // get data and set data
     const services = [
         {
-            id: 1, title: 'Website Development', list_services: [
+            id: 1,
+            title: 'Website Development',
+            list_services: [
                 'Frontend & Backend: Responsive design and strong business logic',
                 'API Integration: Connecting various services for optimal functionality',
                 'Maintenance & Support: Ensuring the performance and security of your application',
@@ -45,7 +60,8 @@ function getServices(setServices: Dispatch<SetStateAction<ServiceProps[]>>, setS
             source: '/icons/Website.png',
         },
         {
-            id: 2, title: 'Mobile Development',
+            id: 2,
+            title: 'Mobile Development',
             list_services: [
                 'Attractive and intuitive UI/UX design',
                 'API integration for better functionality',
@@ -60,6 +76,10 @@ function getServices(setServices: Dispatch<SetStateAction<ServiceProps[]>>, setS
 }
 
 function getTechStacks(setTechStacks: Dispatch<SetStateAction<TechStackProps[]>>, setTechStacksUpdateStatus: Dispatch<SetStateAction<boolean>>) {
+    // reset data
+    setTechStacks([]);
+
+    // get data and set data
     const tech_stacks = [
         { id: 2, title: 'Laravel', icon_source: '/icons/Laravel.png' },
         { id: 3, title: 'CodeIgniter', icon_source: '/icons/Codeigniter.png' },
@@ -81,6 +101,10 @@ function getTechStacks(setTechStacks: Dispatch<SetStateAction<TechStackProps[]>>
 }
 
 function getProjects(setprojects: Dispatch<SetStateAction<ProjectProps[]>>, setProjectsUpdateStatus: Dispatch<SetStateAction<boolean>>) {
+    // reset data
+    setprojects([]);
+    
+    // get data and set data
     const projects = [
         {
             id: 1,
@@ -91,7 +115,229 @@ function getProjects(setprojects: Dispatch<SetStateAction<ProjectProps[]>>, setP
             process for BUMJ in the JIMM FST Universitas Airlangga organization. Includes managing product data to be sold such as adding 
             new products, updating products, checking sales data for each product, managing orders; and purchasing products.
             `,
-            tech_stacks: 'Laravel 10',
+            tech_stacks: [
+                'Laravel Framework version 10 (an upgrade from Laravel version 9)',
+                'MySQL Database',
+                'Github for version control',
+            ],
+            jobdesc: 'FullStack Programmer',
+            list_jobdescs: [
+                'Design Database',
+                'Frontend Programming',
+                'Backend Programming',
+            ],
+            documentation: [
+                {
+                    id: 1,
+                    description: `Lorem ipsum`,
+                    image_source: '/projects/jimmonshop/Login Page.png',
+                },
+                {
+                    id: 2,
+                    description: `Lorem ipsum`,
+                    image_source: '/projects/jimmonshop/Register Account Page.png',
+                },
+                {
+                    id: 3,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Landing Page.png',
+                },
+                {
+                    id: 4,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Products Page (without login).png',
+                },
+                {
+                    id: 5,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Detail product category (without login).png',
+                },
+                {
+                    id: 6,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Detail purchase page (without login).png',
+                },
+                {
+                    id: 7,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Detail Purchase Page.png',
+                },
+                {
+                    id: 8,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Invoice Page.png',
+                },
+                {
+                    id: 9,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Event Page (without login).png',
+                },
+                {
+                    id: 10,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Detail Event (without login).png',
+                },
+                {
+                    id: 11,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Form Registrasi Event Page.png',
+                },
+                {
+                    id: 12,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/About Us Page.png',
+                },
+                {
+                    id: 13,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Detail About Us Page.png',
+                },
+                {
+                    id: 14,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Profile Admin.png',
+                },
+                {
+                    id: 15,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin List Product Category.png',
+                },
+                {
+                    id: 16,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin Detail Product Category.png',
+                },
+                {
+                    id: 17,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin Create New Category.png',
+                },
+                {
+                    id: 18,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin Update Product Category.png',
+                },
+                {
+                    id: 19,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin List Products.png',
+                },
+                {
+                    id: 20,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin Detail Product.png',
+                },
+                {
+                    id: 21,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin Create New Product.png',
+                },
+                {
+                    id: 22,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin Update Product.png',
+                },
+                {
+                    id: 23,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin List Orders.png',
+                },
+                {
+                    id: 24,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin List Orders each Product.png',
+                },
+                {
+                    id: 25,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin List Order Status your order is on the way.png',
+                },
+                {
+                    id: 26,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin List Order Status Waiting Payment.png',
+                },
+                {
+                    id: 27,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin List Order Status Seller is preparing your order.png',
+                },
+                {
+                    id: 28,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin List Order Status Completed.png',
+                },
+                {
+                    id: 29,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin List Events.png',
+                },
+                {
+                    id: 30,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin Detail Events.png',
+                },
+                {
+                    id: 31,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin List Event Participants.png',
+                },
+                {
+                    id: 32,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin Create New Events.png',
+                },
+                {
+                    id: 33,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Admin Update Events.png',
+                },
+                {
+                    id: 34,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard Profile user.png',
+                },
+                {
+                    id: 35,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard User Register Event.png',
+                },
+                {
+                    id: 36,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard User Detail Register Event.png',
+                },
+                {
+                    id: 37,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard User Purchase Table.png',
+                },
+                {
+                    id: 38,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard User Invoice.png',
+                },
+                {
+                    id: 39,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Dashboard User Purchase Table Can Complete Purchase.jpg',
+                },
+            ]
+        },
+        {
+            id: 2,
+            project_category: 'OBE',
+            title: 'JANGAN LUPA DUSK BDD TEST NYA',
+            description: `
+            A website that functions to assist the online sales 
+            process for BUMJ in the JIMM FST Universitas Airlangga organization. Includes managing product data to be sold such as adding 
+            new products, updating products, checking sales data for each product, managing orders; and purchasing products.
+            `,
+            tech_stacks: [
+                'Laravel Framework version 10 (an upgrade from Laravel version 9)',
+                'MySQL Database',
+                'Github for version control',
+            ],
             jobdesc: 'FullStack',
             list_jobdescs: [
                 'Design Database',
@@ -101,13 +347,18 @@ function getProjects(setprojects: Dispatch<SetStateAction<ProjectProps[]>>, setP
             documentation: [
                 {
                     id: 1,
-                    description: 'Lorem ipsum',
+                    description: `Lorem ipsum`,
                     image_source: '/projects/jimmonshop/Login Page.png',
                 },
                 {
                     id: 2,
-                    description: 'Lorem ipsum 2',
-                    image_source: '/projects/jimmonshop/About Us Page.png',
+                    description: `Lorem ipsum`,
+                    image_source: '/projects/jimmonshop/Register Account Page.png',
+                },
+                {
+                    id: 3,
+                    description: `Lorem ipsum 2`,
+                    image_source: '/projects/jimmonshop/Landing Page.png',
                 },
             ]
         },
@@ -119,47 +370,49 @@ function getProjects(setprojects: Dispatch<SetStateAction<ProjectProps[]>>, setP
 
 export default function Portfolio() {
     const default_user: UserProps = { name: '', job: '' };
+    const default_contact: ContactProps = {whatsapp_no: ''};
 
-    const [user, setUser] = useState(default_user);
+    const [user, setUser] = useState<UserProps>(default_user);
+    const [contact, setContact] = useState<ContactProps>(default_contact);
     const [contents, setNavbarContents] = useState<ContentProps[]>([]);
     const [services, setServices] = useState<ServiceProps[]>([]);
     const [tech_stacks, setTechStacks] = useState<TechStackProps[]>([]);
     const [projects, setprojects] = useState<ProjectProps[]>([]);
-    const [is_user_update, setUserUpdateStatus] = useState(true);
+    const [is_portfolio_update, setPortfolioUpdateStatus] = useState(true);
     const [is_contents_update, setContentsUpdateStatus] = useState(true);
     const [is_services_update, setServicesUpdateStatus] = useState(true);
     const [is_techStacks_update, setTechStacksUpdateStatus] = useState(true);
     const [is_projects_update, setProjectsUpdateStatus] = useState(true);
 
     useEffect(() => {
-        if (is_user_update) {
-            getUser(setUser, setUserUpdateStatus);
+        if (is_portfolio_update) {
+            getPortFolio(setUser, setContact, setPortfolioUpdateStatus);
         }
-    }, [user, is_user_update]);
+    }, [is_portfolio_update]);
 
     useEffect(() => {
         if (is_contents_update) {
             getNavbarContents(setNavbarContents, setContentsUpdateStatus);
         }
-    }, [contents, is_contents_update]);
+    }, [is_contents_update]);
 
     useEffect(() => {
         if (is_services_update) {
             getServices(setServices, setServicesUpdateStatus);
         }
-    }, [services, is_services_update]);
+    }, [is_services_update]);
 
     useEffect(() => {
         if (is_techStacks_update) {
             getTechStacks(setTechStacks, setTechStacksUpdateStatus);
         }
-    }, [tech_stacks, is_techStacks_update]);
+    }, [is_techStacks_update]);
 
     useEffect(() => {
         if (is_projects_update) {
             getProjects(setprojects, setProjectsUpdateStatus);
         }
-    }, [projects, is_projects_update]);
+    }, [is_projects_update]);
 
     return (
         <>
@@ -188,9 +441,10 @@ export default function Portfolio() {
             {/* <!-- projects section --> */}
             <Projects projects={projects} />
             {/** <!-- end of projects section --> */}
+            <button onClick={() => setProjectsUpdateStatus(true)} className='fixed bottom-4 right-4 bg-blue-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'>Refresh Project</button>
 
             {/* <!-- contact section --> */}
-            <ContactMe />
+            <ContactMe whatsapp_no={contact.whatsapp_no}/>
             {/** <!-- end of contact section --> */}
 
             {/* <!-- footer --> */}
