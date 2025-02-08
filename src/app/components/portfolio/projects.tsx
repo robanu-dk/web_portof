@@ -54,7 +54,7 @@ export default function Projects({ projects }: ProjectsProps) {
                                     }
                                     <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b>Documentation:</b></p>
                                     {
-                                        <ProjectDocumentationCarousel project_documentations={project.documentation} project_id={project.id} />
+                                        <ProjectDocumentationCarousel project_documentations={project.documentation} section_id={`carousel-section-${project.id}`} />
                                     }
                                 </div>
                             </div>
