@@ -15,7 +15,7 @@ interface ProjectDocumentationProps {
 export default function ProjectDocumentationCarousel({ project_documentations, section_id }: ProjectDocumentationProps) {
     const [show, setShow] = useState<number>(0);
     const [navigate_slide_show, setNavigateSlideShow] = useState<boolean>(false);
-    const [refresh_slide, setRefreshSlide] = useState<boolean>(false);
+    const [refresh_slide, setRefreshSlide] = useState<boolean>(true);
     const [count_project_document_old, setCountProjectDocOld] = useState<number>(project_documentations.length);
 
     const navigate_slide_input = useRef<HTMLInputElement>(null);
