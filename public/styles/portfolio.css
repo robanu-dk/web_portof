@@ -13093,6 +13093,32 @@ pre .code {
     gap: 5px;
 }
 
+@keyframes grow-center {
+    0% {
+        transform: scale(0) translateX(-50%);
+    }
+    100% {
+        transform: scale(1) translateX(-50%);
+    }
+}
+
+.animate-grow {
+    animation: grow-center 0.5s ease forwards;
+}
+
+@keyframes minimize-center {
+    0% {
+        transform: scale(1) translateX(-50%);
+    }
+    100% {
+        transform: scale(0) translateX(-50%);
+    }
+}
+
+.animate-minimize {
+    animation: minimize-center 0.5s ease forwards;
+}
+
 /* For dark theme */
 /* Belum dibuat, untuk saat ini masih memerlukan !important */
 @media (prefers-color-scheme: dark) {
