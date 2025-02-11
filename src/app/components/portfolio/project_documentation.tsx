@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image';
-import { MouseEvent, useState } from 'react';
+import { MouseEvent, useRef, useState } from 'react';
 
 interface ProjectDocumentationProps {
     project_documentations: {
@@ -14,7 +14,12 @@ interface ProjectDocumentationProps {
 
 export default function ProjectDocumentationCarousel({ project_documentations, section_id }: ProjectDocumentationProps) {
     const [show, setShow] = useState<number>(0);
+    const [navigate_slide_show, setNavigateSlideShow] = useState<boolean>(false);
+    const [refresh_slide, setRefreshSlide] = useState<boolean>(false);
     const [count_project_document_old, setCountProjectDocOld] = useState<number>(project_documentations.length);
+
+    const navigate_slide_input = useRef<HTMLInputElement>(null);
+
     const id_project_section = section_id.replaceAll('#', '');
 
     // detect if there are changes to project documentation
@@ -31,11 +36,20 @@ export default function ProjectDocumentationCarousel({ project_documentations, s
         });
     }
 
+    const refreshSlide = () => {
+        setRefreshSlide(false);
+        setTimeout(() => {
+            setRefreshSlide(true);
+        }, 10);
+    }
+
     const nextSlide = (e: MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>) => {
         e.preventDefault();
         setShow(show == (project_documentations.length - 1) ? 0 : show + 1);
 
         scrollTop();
+        setNavigateSlideShow(false);
+        refreshSlide();
     }
 
     const previousSlide = (e: MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>) => {
@@ -43,27 +57,63 @@ export default function ProjectDocumentationCarousel({ project_documentations, s
         setShow(show == 0 ? (project_documentations.length - 1) : show - 1);
 
         scrollTop();
+        setNavigateSlideShow(false);
+        refreshSlide();
     }
 
-    const handleIndicatorClick = (e: MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>, index: number) => {
-        e.preventDefault();
-        setShow(index);
+    const navigateSlide = () => {
+        const slide = navigate_slide_input.current ? navigate_slide_input.current.value : '';
+
+        if (slide != '') {
+            const slide_number = parseInt(slide);
+            if (slide_number <= 0) {
+                setShow(0);
+            } else if (slide_number > project_documentations.length) {
+                setShow(project_documentations.length - 1);
+            } else {
+                setShow(slide_number - 1);
+            }
+        }
+
+        if (navigate_slide_input.current) {
+            navigate_slide_input.current.value = '';
+        }
 
         scrollTop();
+        setNavigateSlideShow(false);
+        refreshSlide();
+    }
+
+    const handleNavigateInput = () => {
+        const input_ref = navigate_slide_input.current;
+        if (input_ref) {
+            if (input_ref.value != '') {
+                const value_rule = input_ref.value.replace(/[^0-9]/g, '');
+                if (value_rule != '') {
+                    const value = parseInt(value_rule);
+
+                    input_ref.value = Math.max(1, Math.min(value, project_documentations.length)).toString();
+                } else {
+                    input_ref.value = '';
+                }
+            }
+        }
+    }
+
+    const showNavigate = () => {
+        setNavigateSlideShow(true);
     }
 
     return (
         <div id="default-carousel" className="relative w-full">
             {/* <!-- Carousel wrapper --> */}
+            <div className={`${refresh_slide ? 'transition-opacity duration-500 ease-in-out opacity-100' : 'opacity-0'}`}>
+                <p className={`text-start font-normal text-sm xl:text-base 2xl:text-lg`}>{project_documentations[show].description}</p>
+            </div>
             <div className="relative h-full overflow-hidden rounded-lg">
-                {
-                    project_documentations.map((item, index) =>
-                        <div key={index} className={`${show == index ? 'transition-opacity duration-500 ease-in-out opacity-100' : 'opacity-0'}`}>
-                            <p className={`${show != index ? 'hidden' : ''} text-start font-normal text-sm xl:text-base 2xl:text-lg`}>{item.description}</p>
-                            <Image className={`${show != index ? 'hidden' : ''} relative block w-full rounded-sm`} src={item.image_source} height={4000} width={4000} alt={item.image_source.split('/').reverse()[0]} priority={false} />
-                        </div>
-                    )
-                }
+                <div className={`${refresh_slide ? 'transition-opacity duration-500 ease-in-out opacity-100' : 'opacity-0'}`}>
+                    <Image className={`relative block w-full rounded-sm`} src={project_documentations[show].image_source} height={4000} width={4000} alt={project_documentations[show].image_source.split('/').reverse()[0]} priority={false} />
+                </div>
                 {/* <!-- Slider controls --> */}
                 {
                     project_documentations.length > 1 ? <>
@@ -86,10 +136,20 @@ export default function ProjectDocumentationCarousel({ project_documentations, s
                     </> : null
                 }
                 {/* <!-- Slider indicators --> */}
-                <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-                    {
-                        project_documentations.length > 1 ? project_documentations.map((item, index) => <a key={index} type="button" className={`w-3 h-3 rounded-full ${index == show ? 'bg-white' : 'bg-gray-400'}`} aria-current="true" aria-label={`Slide ${index + 1}`} onClick={(e) => handleIndicatorClick(e, index)}></a>) : null
-                    }
+                <div className={`absolute z-40 bottom-2 left-1/2 -translate-x-1/2 ${navigate_slide_show ? 'hidden' : 'animate-grow'}`}>
+                    <button className='bg-black bg-opacity-50 p-1 mb-2 text-white text-xs md:text-sm rounded' onClick={showNavigate}>Slide {show + 1} of {project_documentations.length}</button>
+                </div>
+                <div className={`absolute z-30 bottom-3 left-1/2 -translate-x-1/2 ${navigate_slide_show ? 'animate-grow' : 'hidden'}`}>
+                    <div className='card rounded-sm shadow-lg'>
+                        <h6 className='text-sm mt-1'>Navigate to Slide</h6>
+                        <div className='flex flex-col md:flex-row gap-2 align-items-center justify-content-center mb-2'>
+                            <label className='text-sm text-start'>Slide Number:</label>
+                            <input ref={navigate_slide_input} placeholder={`${show + 1}`} className='border rounded p-1 w-2/3 md:w-1/3 text-sm' type="text" onChange={handleNavigateInput} />
+                        </div>
+                        <div className='mb-1'>
+                            <button className='bg-purple-600 text-white rounded py-1 px-2 hover:bg-purple-700' onClick={navigateSlide}>Go</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
