@@ -12607,7 +12607,7 @@ pre .code {
         display: block;
         color: #6c757d;
     }
-    
+
     .custom-navbar.show {
         background-color: #fff !important;
     }
@@ -12840,14 +12840,14 @@ pre .code {
         position: relative;
         display: block;
     }
-    
+
     .header .header-content .header-title .down {
         font-size: calc(30px + (75 - 30) * ((100vw - 300px) / (1300 - 1100)));
         margin-bottom: 0;
         position: relative;
         display: block;
     }
-    
+
     .header .header-content .header-subtitle {
         font-size: calc(10px + (22 - 10) * ((100vw - 300px) / (1300 - 1100)));
         letter-spacing: calc(1px + (7 - 1) * ((100vw - 300px) / (1300 - 1100)));
@@ -12876,14 +12876,14 @@ pre .code {
         position: relative;
         display: block;
     }
-    
+
     .header .header-content .header-title .down {
         font-size: calc(30px + (75 - 30) * ((100vw - 300px) / (1300 - 1000)));
         margin-bottom: 0;
         position: relative;
         display: block;
     }
-    
+
     .header .header-content .header-subtitle {
         font-size: calc(10px + (22 - 10) * ((100vw - 300px) / (1300 - 1000)));
         letter-spacing: calc(1px + (7 - 1) * ((100vw - 300px) / (1300 - 1000)));
@@ -12913,14 +12913,14 @@ pre .code {
         display: block;
         margin-top: 5rem;
     }
-    
+
     .header .header-content .header-title .down {
         font-size: calc(30px + (75 - 30) * ((100vw - 300px) / (1300 - 600)));
         margin-bottom: 0;
         position: relative;
         display: block;
     }
-    
+
     .header .header-content .header-subtitle {
         font-size: calc(10px + (22 - 10) * ((100vw - 300px) / (1300 - 600)));
         letter-spacing: calc(1px + (7 - 1) * ((100vw - 300px) / (1300 - 600)));
@@ -12949,14 +12949,14 @@ pre .code {
         position: relative;
         display: block;
     }
-    
+
     .header .header-content .header-title .down {
         font-size: calc(30px + (75 - 30) * ((100vw - 300px) / (1300 - 300)));
         margin-bottom: 0;
         position: relative;
         display: block;
     }
-    
+
     .header .header-content .header-subtitle {
         font-size: calc(10px + (22 - 10) * ((100vw - 300px) / (1300 - 300)));
         letter-spacing: calc(1px + (7 - 1) * ((100vw - 300px) / (1300 - 300)));
@@ -13165,6 +13165,37 @@ pre .code {
 
 .modal-hide {
     animation: hide-animate 0.5s ease forwards;
+}
+
+@keyframes close-modal-animate-open {
+    0% {
+        width: 0px;
+    }
+    100% {
+        width: 50px;
+    }
+}
+
+@keyframes close-modal-animate-hide {
+    0% {
+        width: 50px;
+    }
+    100% {
+        width: 35px;
+    }
+}
+
+.close-modal-label {
+    display: none;
+}
+
+.close-modal-button:not(:hover) {
+    animation: close-modal-animate-hide 0.8s ease forwards;
+}
+
+.close-modal-button:hover .close-modal-label {
+    display: block;
+    animation: close-modal-animate-open 0.8s ease forwards;
 }
 
 /* For dark theme */
