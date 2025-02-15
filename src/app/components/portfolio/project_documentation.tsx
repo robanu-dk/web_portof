@@ -9,10 +9,9 @@ interface ProjectDocumentationProps {
         description: string,
         image_source: string,
     }[],
-    section_id: string,
 }
 
-export default function ProjectDocumentationCarousel({ project_documentations, section_id }: ProjectDocumentationProps) {
+export default function ProjectDocumentationCarousel({ project_documentations }: ProjectDocumentationProps) {
     const [show, setShow] = useState<number>(0);
     const [navigate_slide_show, setNavigateSlideShow] = useState<boolean>(false);
     const [refresh_slide, setRefreshSlide] = useState<boolean>(true);
@@ -20,20 +19,10 @@ export default function ProjectDocumentationCarousel({ project_documentations, s
 
     const navigate_slide_input = useRef<HTMLInputElement>(null);
 
-    const id_project_section = section_id.replaceAll('#', '');
-
     // detect if there are changes to project documentation
     if (count_project_document_old != project_documentations.length) {
         setCountProjectDocOld(project_documentations.length);
         setShow(0);
-    }
-
-    const scrollTop = () => {
-        const target = document.getElementById(id_project_section);
-        window.scrollTo({
-            top: target ? target.offsetTop * 1.1 : 0,
-            behavior: 'smooth',
-        });
     }
 
     const refreshSlide = () => {
@@ -47,7 +36,6 @@ export default function ProjectDocumentationCarousel({ project_documentations, s
         e.preventDefault();
         setShow(show == (project_documentations.length - 1) ? 0 : show + 1);
 
-        scrollTop();
         setNavigateSlideShow(false);
         refreshSlide();
     }
@@ -56,7 +44,6 @@ export default function ProjectDocumentationCarousel({ project_documentations, s
         e.preventDefault();
         setShow(show == 0 ? (project_documentations.length - 1) : show - 1);
 
-        scrollTop();
         setNavigateSlideShow(false);
         refreshSlide();
     }
@@ -79,7 +66,6 @@ export default function ProjectDocumentationCarousel({ project_documentations, s
             navigate_slide_input.current.value = '';
         }
 
-        scrollTop();
         setNavigateSlideShow(false);
         refreshSlide();
     }
