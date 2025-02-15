@@ -13119,6 +13119,28 @@ pre .code {
     animation: minimize-center 0.5s ease forwards;
 }
 
+.max-h-modal {
+    max-height: 40rem;
+}
+
+@media (min-width: 320) {
+    .max-h-modal {
+        max-height: 28rem;
+    }
+}
+
+@media (min-width: 425) {
+    .max-h-modal {
+        max-height: 30rem;
+    }
+}
+
+@media (min-width: 1024) {
+    .max-h-modal {
+        max-height: 40rem;
+    }
+}
+
 /* For dark theme */
 /* Belum dibuat, untuk saat ini masih memerlukan !important */
 @media (prefers-color-scheme: dark) {
