@@ -13190,12 +13190,12 @@ pre .code {
 }
 
 .close-modal-button:not(:hover) {
-    animation: close-modal-animate-hide 0.8s ease forwards;
+    animation: close-modal-animate-hide 0.5s ease forwards;
 }
 
 .close-modal-button:hover .close-modal-label {
     display: block;
-    animation: close-modal-animate-open 0.8s ease forwards;
+    animation: close-modal-animate-open 0.5s ease forwards;
 }
 
 /* For dark theme */
