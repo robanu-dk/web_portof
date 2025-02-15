@@ -29,7 +29,7 @@ export default function ProjectDetail({ project, show, closeProjectDetail }: Pro
                 <div className="p-6 max-h-modal overflow-y-auto">
                     {
                         show ?
-                            <div className="fixed top-6 right-6 bg-red-500 flex flex-row gap-2 align-items-center justify-center rounded-full text-white">
+                            <div className="fixed top-6 right-6 bg-red-500 flex flex-row gap-2 align-items-center justify-center rounded-full text-white z-50 opacity-75 hover:opacity-100">
                                 <button className="flex flex-row text-xl font-normal overflow-hidden close-modal-button p-2" onClick={closeProjectDetail}><IoCloseSharp width={4000} height={4000} /><div className="text-base font-normal close-modal-label"><b>Close</b></div></button>
                             </div>
                             : null
