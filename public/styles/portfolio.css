@@ -13141,6 +13141,32 @@ pre .code {
     }
 }
 
+@keyframes grow-animate {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(0.9);
+    }
+}
+
+@keyframes hide-animate {
+    0% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+.modal-show {
+    animation: grow-animate 0.5s ease forwards;
+}
+
+.modal-hide {
+    animation: hide-animate 0.5s ease forwards;
+}
+
 /* For dark theme */
 /* Belum dibuat, untuk saat ini masih memerlukan !important */
 @media (prefers-color-scheme: dark) {
