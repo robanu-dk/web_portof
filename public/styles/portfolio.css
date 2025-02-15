@@ -13123,21 +13123,21 @@ pre .code {
     max-height: 40rem;
 }
 
-@media (min-width: 320) {
+@media (min-width: 320px) {
     .max-h-modal {
         max-height: 28rem;
     }
 }
 
-@media (min-width: 425) {
+@media (min-width: 425px) {
     .max-h-modal {
         max-height: 30rem;
     }
 }
 
-@media (min-width: 1024) {
+@media (min-width: 1024px) {
     .max-h-modal {
-        max-height: 40rem;
+        max-height: 35rem;
     }
 }
 
@@ -13146,7 +13146,7 @@ pre .code {
         transform: scale(0);
     }
     100% {
-        transform: scale(0.9);
+        transform: scale(1);
     }
 }
 
