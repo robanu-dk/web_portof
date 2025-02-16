@@ -1,85 +1,64 @@
-import ProjectDocumentationCarousel from "./project_documentation"
+'use client';
 
-interface ProjectProps {
-    id: number,
-    project_category: string,
-    title: string,
-    description: string,
-    tech_stacks: string | string[],
-    jobdesc: string,
-    list_jobdescs: string | string[],
-    documentations: {
-        id: number,
-        description: string,
-        image_source: string,
-    }[],
-}
+import { useState } from "react";
+import ProjectDetail, { ProjectProps } from "./project_detail";
+import { BiDetail } from 'react-icons/bi';
 
 interface ProjectsProps {
     projects: ProjectProps[],
 }
 
 export default function Projects({ projects }: ProjectsProps) {
+    const [project_show, setProjectShow] = useState<ProjectProps | null>(null);
+    const [show_modal, setShowModal] = useState<boolean>(false);
+
+    const closeDetailProject = () => {
+        setShowModal(false);
+        setTimeout(() => {
+            setProjectShow(null);
+        }, 250);
+    };
+
+    const showDetailProject = (project: ProjectProps) => {
+        setProjectShow(project);
+        setShowModal(true);
+    };
+
     return (
         <section className="section" id="projects">
             <div className="container text-center">
                 <p className="section-subtitle">What I Did ?</p>
                 <h2 className="section-title mb-6">Projects</h2>
                 {/* <!-- row --> */}
-                {
-                    projects.map((project, key) =>
-                        <div key={`project-${key}`} id={`carousel-section-${project.id}`} className='mb-3'>
-                            <div className="card card-projects rounded-sm hover:-translate-y-2 hover:shadow-lg">
-                                <div className='p-2'>
-                                    <h4 className='text-start mb-3 mt-2'>{project.title} ({project.project_category})</h4>
-                                    <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>Description:</b> {project.description}</p>
-                                    {
-                                        project.tech_stacks.length > 0 ?
-                                            <>
-                                                <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>Tech Stacks:</b> {typeof (project.tech_stacks) == 'string' ? project.tech_stacks : null}</p>
-                                                {
-                                                    Array.isArray(project.tech_stacks) ?
-                                                        <ol className='list-decimal text-sm xl:text-base 2xl:text-lg pl-4 space-y-2'>
-                                                            {
-                                                                project.tech_stacks?.map((tech_stack, index) => <li key={index} className='text-start font-normal'>{tech_stack}</li>)
-                                                            }
-                                                        </ol>
-                                                        : null
-                                                }
-                                            </>
-                                            : null
-                                    }
-                                    <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>Jobdesc:</b> {project.jobdesc}</p>
-                                    {
-                                        project.list_jobdescs.length > 0 ?
-                                            <>
-                                                <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>List Detail Jobdesc:</b> {typeof (project.list_jobdescs) == 'string' ? project.list_jobdescs : null}</p>
-                                                {
-                                                    Array.isArray(project.list_jobdescs) ?
-                                                        <ol className='list-decimal text-sm xl:text-base 2xl:text-lg pl-4 space-y-2'>
-                                                            {
-                                                                project.list_jobdescs?.map((jobdesc, index) => <li key={index} className='text-start font-normal'>{jobdesc}</li>)
-                                                            }
-                                                        </ol>
-                                                        : null
-                                                }
-                                            </>
-                                            : null
-                                    }
-                                    {
-                                        project.documentations.length > 0 ?
-                                            <>
-                                                <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b>Documentation:</b></p>
-                                                <ProjectDocumentationCarousel project_documentations={project.documentations} section_id={`carousel-section-${project.id}`} />
-                                            </>
-                                            : null
-                                    }
+                <div className="row">
+                    {
+                        projects.map((project, key) =>
+                            <div key={key} className="col-xsm-4 col-sm-4 col-md-3 col-lg-2 mt-4">
+                                <div className="card card-main h-full overflow-hidden rounded hover:-translate-y-2 hover:shadow-lg" onClick={() => showDetailProject(project)}>
+                                    <div className="card-body">
+                                        <h6 className="text-start">
+                                            Project: {project.title}<br />
+                                            <small>category: {project.project_category}</small>
+                                        </h6>
+                                    </div>
+                                        <div className="absolute bg-black bg-opacity-50 w-full h-full flex align-items-center justify-content-center z-50 click-detail">
+                                            <div className="text-xs font-normal bg-white w-3/4 flex flex-row align-items-center justify-content-center gap-1 border-2 border-gray-500 rounded p-1 detail-project-tooltip">
+                                                <BiDetail width={400} height={400} />
+                                                <div>Click for detail</div>
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
-                        </div>)
-                }
+                        )
+                    }
+                </div>
                 {/** <!-- end of row --> */}
-            </div> {/** <!-- end of container --> */}
+                {/* modals detail project */}
+                {
+                    project_show ? <ProjectDetail project={project_show} show={show_modal} closeProjectDetail={closeDetailProject} /> : null
+                }
+            </div>
+            {/** <!-- end of container --> */}
         </section>
     );
 }
