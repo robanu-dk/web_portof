@@ -13152,7 +13152,7 @@ pre .code {
 
 @keyframes hide-animate {
     0% {
-        transform: scale(0.9);
+        transform: scale(1);
     }
     100% {
         transform: scale(0);
@@ -13196,6 +13196,24 @@ pre .code {
 .close-modal-button:hover .close-modal-label {
     display: block;
     animation: close-modal-animate-open 0.5s ease forwards;
+}
+
+.card-main {
+    cursor: pointer;
+}
+
+.click-detail {
+    visibility: hidden;
+}
+
+.card-main:hover .click-detail {
+    visibility: visible;
+    animation: grow-animate 0.3s ease forwards;
+}
+
+.card-main:not(:hover) .click-detail {
+    visibility: visible;
+    animation: hide-animate 0.3s ease forwards;
 }
 
 /* For dark theme */
