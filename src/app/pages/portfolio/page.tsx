@@ -29,7 +29,7 @@ function getPortFolio(setUser: Dispatch<SetStateAction<UserProps>>, setContact: 
 function getNavbarContents(setNavbarContents: Dispatch<SetStateAction<ContentProps[]>>, setNavbarContentsUpdateStatus: Dispatch<SetStateAction<boolean>>) {
     // reset data
     setNavbarContents([]);
-    
+
     // get data and set data
     const nav_contents = [
         { id: 'about-nav', title: 'About', link: '#about' },
@@ -46,7 +46,7 @@ function getNavbarContents(setNavbarContents: Dispatch<SetStateAction<ContentPro
 function getServices(setServices: Dispatch<SetStateAction<ServiceProps[]>>, setServicesUpdateStatus: Dispatch<SetStateAction<boolean>>) {
     // reset data
     setServices([]);
-    
+
     // get data and set data
     const services = [
         {
@@ -81,19 +81,22 @@ function getTechStacks(setTechStacks: Dispatch<SetStateAction<TechStackProps[]>>
 
     // get data and set data
     const tech_stacks = [
-        { id: 2, title: 'Laravel', icon_source: '/icons/Laravel.png' },
-        { id: 3, title: 'CodeIgniter', icon_source: '/icons/Codeigniter.png' },
-        { id: 4, title: 'Flutter', icon_source: '/icons/Flutter.png' },
-        { id: 1, title: 'React JS', icon_source: '/icons/React.png' },
+        { id: 1, title: 'Laravel', icon_source: '/icons/Laravel.png' },
+        { id: 2, title: 'CodeIgniter', icon_source: '/icons/Codeigniter.png' },
+        { id: 3, title: 'Flutter', icon_source: '/icons/Flutter.png' },
+        { id: 4, title: 'React JS', icon_source: '/icons/React.png' },
         { id: 5, title: 'MySql', icon_source: '/icons/MySql.png' },
-        { id: 6, title: 'PHP', icon_source: '/icons/PHP.png' },
-        { id: 7, title: 'Dart', icon_source: '/icons/Dart.png' },
-        { id: 8, title: 'Javascript', icon_source: '/icons/Javascript.png' },
-        { id: 9, title: 'Typescript', icon_source: '/icons/Typescript.png' },
-        { id: 10, title: 'CSS', icon_source: '/icons/CSS.png' },
-        { id: 11, title: 'HTML', icon_source: '/icons/HTML.png' },
-        { id: 12, title: 'Git', icon_source: '/icons/GIT.png' },
-        { id: 13, title: 'Tortoise SVN', icon_source: '/icons/SVN.png' },
+        { id: 6, title: 'Firebase', icon_source: '/icons/Firebase.png' },
+        { id: 7, title: 'PHP', icon_source: '/icons/PHP.png' },
+        { id: 8, title: 'Dart', icon_source: '/icons/Dart.png' },
+        { id: 9, title: 'Javascript', icon_source: '/icons/Javascript.png' },
+        { id: 10, title: 'Typescript', icon_source: '/icons/Typescript.png' },
+        { id: 11, title: 'CSS', icon_source: '/icons/CSS.png' },
+        { id: 12, title: 'HTML', icon_source: '/icons/HTML.png' },
+        { id: 13, title: 'Git', icon_source: '/icons/GIT.png' },
+        { id: 14, title: 'TortoiseSVN', icon_source: '/icons/SVN.png' },
+        { id: 15, title: 'TortoiseGIT', icon_source: '/icons/TortoiseGit.png' },
+        { id: 16, title: 'Github', icon_source: '/icons/Github.png' },
     ];
 
     setTechStacksUpdateStatus(false);
@@ -103,7 +106,7 @@ function getTechStacks(setTechStacks: Dispatch<SetStateAction<TechStackProps[]>>
 function getProjects(setprojects: Dispatch<SetStateAction<ProjectProps[]>>, setProjectsUpdateStatus: Dispatch<SetStateAction<boolean>>) {
     // reset data
     setprojects([]);
-    
+
     // get data and set data
     const projects = [
         {
@@ -117,8 +120,8 @@ function getProjects(setprojects: Dispatch<SetStateAction<ProjectProps[]>>, setP
             `,
             tech_stacks: [
                 'Laravel Framework version 10 (an upgrade from Laravel version 9)',
-                'MySQL Database',
-                'Github for version control',
+                'MySQL for database',
+                'Git for version control',
             ],
             jobdesc: 'FullStack Programmer',
             list_jobdescs: [
@@ -126,10 +129,16 @@ function getProjects(setprojects: Dispatch<SetStateAction<ProjectProps[]>>, setP
                 'Frontend Programming',
                 'Backend Programming',
             ],
-            documentation: [
+            documentations: [
                 {
                     id: 1,
-                    description: `Lorem ipsum`,
+                    description: `
+                    The login page serves to authenticate users, 
+                    granting access to features that require authorization. 
+                    Users can enter their username and password, with the option to 
+                    remember their session. This page also features a link for registration 
+                    for new users.
+                    `,
                     image_source: '/projects/jimmonshop/Login Page.png',
                 },
                 {
@@ -336,7 +345,7 @@ function getProjects(setprojects: Dispatch<SetStateAction<ProjectProps[]>>, setP
             tech_stacks: [
                 'Laravel Framework version 10 (an upgrade from Laravel version 9)',
                 'MySQL Database',
-                'Github for version control',
+                'Git for version control',
             ],
             jobdesc: 'FullStack',
             list_jobdescs: [
@@ -344,7 +353,7 @@ function getProjects(setprojects: Dispatch<SetStateAction<ProjectProps[]>>, setP
                 'Frontend Programming',
                 'Backend Programming',
             ],
-            documentation: [
+            documentations: [
                 {
                     id: 1,
                     description: `Lorem ipsum`,
@@ -362,6 +371,231 @@ function getProjects(setprojects: Dispatch<SetStateAction<ProjectProps[]>>, setP
                 },
             ]
         },
+        {
+            id: 3,
+            project_category: 'Website Development',
+            title: 'Akomodasi HO (Head Office)',
+            description: `
+            -----
+            `,
+            tech_stacks: [
+                'Laravel Framework version 10',
+                'MySQL Database',
+                'Subversion (SVN) for version control',
+            ],
+            jobdesc: 'FullStack',
+            list_jobdescs: [
+                'Frontend Programming',
+                'Backend Programming',
+            ],
+            documentations: [
+                {
+                    id: 1,
+                    description: `Lorem ipsum`,
+                    image_source: '/projects/jimmonshop/Login Page.png',
+                },
+            ]
+        },
+        {
+            id: 4,
+            project_category: 'Website Development',
+            title: 'Akomodasi Regional',
+            description: `
+            Inget inget dulu ngapain aja yang di CI
+            `,
+            tech_stacks: [
+                'CodeIgniter 3',
+                'MySQL Database',
+                'Subversion (SVN) for version control',
+            ],
+            jobdesc: 'FullStack',
+            list_jobdescs: [
+                'Frontend Programming',
+                'Backend Programming',
+            ],
+            documentations: [
+                {
+                    id: 1,
+                    description: `Lorem ipsum`,
+                    image_source: '/projects/jimmonshop/Login Page.png',
+                },
+            ]
+        },
+        {
+            id: 5,
+            project_category: 'Website Development',
+            title: 'Dashboard SLA',
+            description: `
+            Inget inget dulu ngapain aja yang di Laravel
+            `,
+            tech_stacks: [
+                'Laravel version 10',
+                'MySQL Database',
+                'Subversion (SVN) for version control',
+            ],
+            jobdesc: 'FullStack',
+            list_jobdescs: [
+                'Frontend Programming',
+                'Backend Programming',
+            ],
+            documentations: [
+                {
+                    id: 1,
+                    description: `Lorem ipsum`,
+                    image_source: '/projects/jimmonshop/Login Page.png',
+                },
+            ]
+        },
+        {
+            id: 6,
+            project_category: 'Website Development',
+            title: 'IT Support HO (Head Office)',
+            description: `
+            Inget inget dulu ngapain aja yang di CI
+            `,
+            tech_stacks: [
+                'CodeIgniter 3',
+                'MySQL Database',
+                'Git for version control',
+            ],
+            jobdesc: 'FullStack',
+            list_jobdescs: [
+                'Frontend Programming',
+                'Backend Programming',
+            ],
+            documentations: [
+                {
+                    id: 1,
+                    description: `Lorem ipsum`,
+                    image_source: '/projects/jimmonshop/Login Page.png',
+                },
+            ]
+        },
+        {
+            id: 7,
+            project_category: 'Website Development',
+            title: 'MONIKA',
+            description: `
+            Inget inget dulu ngapain aja yang di CI
+            `,
+            tech_stacks: [
+                'CodeIgniter 4',
+                'MySQL Database',
+                'Git for version control',
+            ],
+            jobdesc: 'FullStack',
+            list_jobdescs: [
+                'Frontend Programming',
+                'Backend Programming',
+            ],
+            documentations: [
+                {
+                    id: 1,
+                    description: `Lorem ipsum`,
+                    image_source: '/projects/jimmonshop/Login Page.png',
+                },
+            ]
+        },
+        {
+            id: 8,
+            project_category: 'Website Development',
+            title: 'SINOFA',
+            description: `
+            Inget inget dulu ngapain aja yang di CI
+            `,
+            tech_stacks: [
+                'CodeIgniter 3',
+                'MySQL Database',
+                'Subversion (SVN) for version control',
+            ],
+            jobdesc: 'FullStack',
+            list_jobdescs: [
+                'Frontend Programming',
+                'Backend Programming',
+            ],
+            documentations: [
+                {
+                    id: 1,
+                    description: `Lorem ipsum`,
+                    image_source: '/projects/jimmonshop/Login Page.png',
+                },
+            ]
+        },
+        {
+            id: 9,
+            project_category: 'Website Development',
+            title: 'SUPERMAN',
+            description: `
+            Inget inget dulu ngapain aja yang di Laravel
+            `,
+            tech_stacks: [
+                'Laravel Version (cek)',
+                'MySQL Database',
+                'Subversion (SVN) for version control',
+            ],
+            jobdesc: 'FullStack',
+            list_jobdescs: [
+                'Frontend Programming',
+                'Backend Programming',
+            ],
+            documentations: [
+                {
+                    id: 1,
+                    description: `Lorem ipsum`,
+                    image_source: '/projects/jimmonshop/Login Page.png',
+                },
+            ]
+        },
+        {
+            id: 10,
+            project_category: 'Mobile Development',
+            title: 'BudTrack',
+            description: `
+            Inget inget dulu ngapain aja yang di Laravel
+            `,
+            tech_stacks: [
+                'Flutter',
+                'Firebase',
+                'Git for version control',
+            ],
+            jobdesc: 'FullStack',
+            list_jobdescs: [
+                'Frontend Programming',
+                'Backend Programming',
+            ],
+            documentations: [
+                {
+                    id: 1,
+                    description: `Lorem ipsum`,
+                    image_source: '/projects/jimmonshop/Login Page.png',
+                },
+            ]
+        },
+        {
+            id: 11,
+            project_category: 'Mobile Development',
+            title: 'MoDis',
+            description: `
+            Inget inget dulu ngapain aja yang di Laravel
+            `,
+            tech_stacks: [
+                'Flutter',
+                'Laravel Version 11 for Appication Programming Interface (API)',
+                'Git for version control',
+            ],
+            jobdesc: 'FullStack',
+            list_jobdescs: [
+                'Frontend Programming',
+                'Backend Programming',
+            ],
+            documentations: [
+                {
+                    id: 1,
+                    description: `Lorem ipsum`,
+                    image_source: '/projects/jimmonshop/Login Page.png',
+                },
+            ]
+        },
     ];
 
     setProjectsUpdateStatus(false);
@@ -370,7 +604,7 @@ function getProjects(setprojects: Dispatch<SetStateAction<ProjectProps[]>>, setP
 
 export default function Portfolio() {
     const default_user: UserProps = { name: '', job: '' };
-    const default_contact: ContactProps = {whatsapp_no: ''};
+    const default_contact: ContactProps = { whatsapp_no: '' };
 
     const [user, setUser] = useState<UserProps>(default_user);
     const [contact, setContact] = useState<ContactProps>(default_contact);
@@ -444,7 +678,7 @@ export default function Portfolio() {
             <button onClick={() => setProjectsUpdateStatus(true)} className='fixed bottom-4 right-4 bg-blue-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400'>Refresh Project</button>
 
             {/* <!-- contact section --> */}
-            <ContactMe whatsapp_no={contact.whatsapp_no}/>
+            <ContactMe whatsapp_no={contact.whatsapp_no} />
             {/** <!-- end of contact section --> */}
 
             {/* <!-- footer --> */}
