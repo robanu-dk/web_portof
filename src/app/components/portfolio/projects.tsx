@@ -33,9 +33,9 @@ export default function Projects({ projects }: ProjectsProps) {
                 <div className="row">
                     {
                         projects.map((project, key) =>
-                            <div key={key} className="col-xsm-4 col-sm-4 col-md-3 col-lg-2 mt-4">
+                            <div key={key} className="col-xsm-6 col-sm-4 col-md-3 col-lg-2 mt-4">
                                 <div className="card card-main h-full overflow-hidden rounded hover:-translate-y-2 hover:shadow-lg" onClick={() => showDetailProject(project)}>
-                                    <div className="card-body">
+                                    <div className="card-body p-3">
                                         <h6 className="text-start">
                                             Project: {project.title}<br />
                                             <small>category: {project.project_category}</small>
