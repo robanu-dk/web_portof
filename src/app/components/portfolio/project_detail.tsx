@@ -29,14 +29,14 @@ export default function ProjectDetail({ project, show, closeProjectDetail }: Pro
                 <div className="p-6 max-h-modal overflow-y-auto">
                     {
                         show ?
-                            <div className="fixed top-6 right-6 bg-red-500 flex flex-row gap-2 align-items-center justify-center rounded-full text-white z-50 opacity-75 hover:opacity-100">
-                                <button className="flex flex-row text-xl font-normal overflow-hidden close-modal-button p-2" onClick={closeProjectDetail}><IoCloseSharp width={4000} height={4000} /><div className="text-base font-normal close-modal-label"><b>Close</b></div></button>
+                            <div className="fixed top-6 right-5 bg-red-500 flex flex-row gap-2 align-items-center justify-center rounded-full text-white z-50 opacity-75 hover:opacity-100">
+                                <button className="flex flex-row align-items-center text-xl font-normal overflow-hidden close-modal-button p-2" onClick={closeProjectDetail}><IoCloseSharp width={4000} height={4000} /><div className="font-normal close-modal-label font-close"><b>Close</b></div></button>
                             </div>
                             : null
                     }
-                    <h4 className='text-start mb-3 mt-2'>
-                        {project.title}<br />
-                        <small>category: {project.project_category}</small>
+                    <h4 className='text-start px-2 mb-3 mt-2'>
+                        <div className="font-modal-title-card">{project.title}</div>
+                        <div className="font-modal-label-card">category: {project.project_category}</div>
                     </h4>
                     <div className='p-2'>
                         <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>Description:</b> {project.description}</p>
