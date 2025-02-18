@@ -12284,7 +12284,7 @@ pre .code {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 49;
     display: -webkit-box;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -13125,19 +13125,19 @@ pre .code {
 
 @media (min-width: 320px) {
     .max-h-modal {
-        max-height: 28rem;
+        max-height: 33rem;
     }
 }
 
 @media (min-width: 425px) {
     .max-h-modal {
-        max-height: 30rem;
+        max-height: 35rem;
     }
 }
 
 @media (min-width: 1024px) {
     .max-h-modal {
-        max-height: 35rem;
+        max-height: 40rem;
     }
 }
 
@@ -13220,6 +13220,10 @@ pre .code {
     min-height: 10rem;
 }
 
+.font-close {
+    font-size: 1rem;
+}
+
 @media (min-width: 320px) {
     .font-label-card {
         font-size: 0.7rem;
@@ -13227,6 +13231,14 @@ pre .code {
     
     .font-title-card {
         font-size: 0.9rem;
+    }
+    
+    .font-modal-label-card {
+        font-size: 0.8rem;
+    }
+    
+    .font-modal-title-card {
+        font-size: 1.5rem;
     }
 }
 
@@ -13238,6 +13250,14 @@ pre .code {
     .font-title-card {
         font-size: 0.98rem;
     }
+        
+    .font-modal-label-card {
+        font-size: 1rem;
+    }
+    
+    .font-modal-title-card {
+        font-size: 1.55rem;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -13247,6 +13267,14 @@ pre .code {
     
     .font-title-card {
         font-size: 1.25rem;
+    }
+        
+    .font-modal-label-card {
+        font-size: 1.2rem;
+    }
+    
+    .font-modal-title-card {
+        font-size: 1.9rem;
     }
 }
 
