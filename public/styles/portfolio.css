@@ -13216,6 +13216,40 @@ pre .code {
     animation: hide-animate 0.3s ease forwards;
 }
 
+.min-h-card {
+    min-height: 10rem;
+}
+
+@media (min-width: 320px) {
+    .font-label-card {
+        font-size: 0.7rem;
+    }
+    
+    .font-title-card {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 425px) {
+    .font-label-card {
+        font-size: 0.75rem;
+    }
+    
+    .font-title-card {
+        font-size: 0.98rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .font-label-card {
+        font-size: 1rem;
+    }
+    
+    .font-title-card {
+        font-size: 1.25rem;
+    }
+}
+
 /* For dark theme */
 /* Belum dibuat, untuk saat ini masih memerlukan !important */
 @media (prefers-color-scheme: dark) {
