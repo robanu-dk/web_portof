@@ -33,20 +33,20 @@ export default function Projects({ projects }: ProjectsProps) {
                 <div className="row">
                     {
                         projects.map((project, key) =>
-                            <div key={key} className="col-xsm-6 col-sm-4 col-md-3 col-lg-2 mt-4">
+                            <div key={key} className="col-xsm-6 col-sm-4 col-md-3 col-lg-3 mt-4">
                                 <div className="card card-main h-full overflow-hidden rounded hover:-translate-y-2 hover:shadow-lg" onClick={() => showDetailProject(project)}>
-                                    <div className="card-body p-3">
-                                        <h6 className="text-start">
-                                            Project: {project.title}<br />
-                                            <small>category: {project.project_category}</small>
-                                        </h6>
+                                    <div className="card-body p-0 flex flex-column min-h-card">
+                                        <h6 className="font-normal text-gray-500 text-start mt-1 px-2 font-label-card">{project.project_category}</h6>
+                                        <h5 className="text-start px-2 font-title-card mt-3 mb-4">
+                                            {project.title}
+                                        </h5>
                                     </div>
-                                        <div className="absolute bg-black bg-opacity-50 w-full h-full flex align-items-center justify-content-center z-50 click-detail">
-                                            <div className="text-xs font-normal bg-white w-3/4 flex flex-row align-items-center justify-content-center gap-1 border-2 border-gray-500 rounded p-1 detail-project-tooltip">
-                                                <BiDetail width={400} height={400} />
-                                                <div>Click for detail</div>
-                                            </div>
+                                    <div className="absolute bg-black bg-opacity-50 w-full h-full flex align-items-center justify-content-center z-50 click-detail">
+                                        <div className="text-xs font-normal bg-white w-3/4 flex flex-row align-items-center justify-content-center gap-1 border-2 border-gray-500 rounded p-1 detail-project-tooltip">
+                                            <BiDetail width={400} height={400} />
+                                            <div>Click for detail</div>
                                         </div>
+                                    </div>
                                 </div>
                             </div>
                         )
