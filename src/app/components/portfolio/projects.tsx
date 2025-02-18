@@ -41,7 +41,7 @@ export default function Projects({ projects }: ProjectsProps) {
                                             {project.title}
                                         </h5>
                                     </div>
-                                    <div className="absolute bg-black bg-opacity-50 w-full h-full flex align-items-center justify-content-center z-50 click-detail">
+                                    <div className="absolute bg-black bg-opacity-50 w-full h-full flex align-items-center justify-content-center click-detail">
                                         <div className="text-xs font-normal bg-white w-3/4 flex flex-row align-items-center justify-content-center gap-1 border-2 border-gray-500 rounded p-1 detail-project-tooltip">
                                             <BiDetail width={400} height={400} />
                                             <div>Click for detail</div>
