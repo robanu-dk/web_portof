@@ -13218,14 +13218,16 @@ pre .code {
     visibility: hidden;
 }
 
-.card-main:hover .click-detail {
-    visibility: visible;
-    animation: grow-animate 0.3s ease forwards;
-}
-
-.card-main:not(:hover) .click-detail {
-    visibility: visible;
-    animation: hide-animate 0.3s ease forwards;
+@media (min-width: 1024px) {
+    .card-main:hover .click-detail {
+        visibility: visible;
+        animation: grow-animate 0.3s ease forwards;
+    }
+    
+    .card-main:not(:hover) .click-detail {
+        visibility: visible;
+        animation: hide-animate 0.3s ease forwards;
+    }
 }
 
 .min-h-card {
