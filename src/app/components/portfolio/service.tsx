@@ -20,7 +20,7 @@ export default function Service({ services }: ServicesProps) {
                 <p className="section-subtitle">What I Do ?</p>
                 <h2 className="section-title mb-6">Services</h2>
                 <div className="text-muted font-bold text-xs text-start mb-2 lg:hidden">
-                    *Click to see the details
+                    *Click to see details
                 </div>
                 {/* <!-- row --> */}
                 <div className="row d-flex justify-content-center">

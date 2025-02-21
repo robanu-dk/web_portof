@@ -30,7 +30,7 @@ export default function Projects({ projects }: ProjectsProps) {
                 <p className="section-subtitle">What I Did ?</p>
                 <h2 className="section-title mb-6">Projects</h2>
                 <div className="text-muted font-bold text-start text-xs mb-1 lg:hidden">
-                    *Click to see the details
+                    *Click to see details
                 </div>
                 {/* <!-- row --> */}
                 <div className="row">
@@ -47,7 +47,7 @@ export default function Projects({ projects }: ProjectsProps) {
                                     <div className="absolute bg-black bg-opacity-50 w-full h-full flex align-items-center justify-content-center click-detail">
                                         <div className="text-xs font-normal bg-white w-3/4 flex flex-row align-items-center justify-content-center gap-1 border-2 border-gray-500 rounded p-1 detail-project-tooltip">
                                             <BiDetail width={400} height={400} />
-                                            <div>Click for detail</div>
+                                            <div>Click to see details</div>
                                         </div>
                                     </div>
                                 </div>
