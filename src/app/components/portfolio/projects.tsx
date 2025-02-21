@@ -29,11 +29,14 @@ export default function Projects({ projects }: ProjectsProps) {
             <div className="container text-center">
                 <p className="section-subtitle">What I Did ?</p>
                 <h2 className="section-title mb-6">Projects</h2>
+                <div className="text-muted font-bold text-start text-xs mb-1 lg:hidden">
+                    *Click to see the details
+                </div>
                 {/* <!-- row --> */}
                 <div className="row">
                     {
                         projects.map((project, key) =>
-                            <div key={key} className="col-xsm-6 col-sm-4 col-md-3 col-lg-3 mt-4">
+                            <div key={key} className="col-xsm-6 col-sm-4 col-md-3 col-lg-3 my-2">
                                 <div className="card card-main h-full overflow-hidden rounded hover:-translate-y-2 hover:shadow-lg" onClick={() => showDetailProject(project)}>
                                     <div className="card-body p-0 flex flex-column min-h-card">
                                         <h6 className="font-normal text-gray-500 text-start mt-1 px-2 font-label-card">{project.project_category}</h6>
