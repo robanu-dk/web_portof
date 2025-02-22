@@ -94,7 +94,7 @@ export default function ProjectDocumentationCarousel({ project_documentations }:
         <div id="default-carousel" className="relative w-full">
             {/* <!-- Carousel wrapper --> */}
             <div className={`${refresh_slide ? 'transition-opacity duration-500 ease-in-out opacity-100' : 'opacity-0'}`}>
-                <p className={`text-start font-normal text-sm xl:text-base 2xl:text-lg`}>{project_documentations[show].description}</p>
+                <p className={`text-start font-normal text-sm lg:text-base`}>{project_documentations[show].description}</p>
             </div>
             <div className="relative h-full overflow-hidden rounded-lg">
                 <div className={`${refresh_slide ? 'transition-opacity duration-500 ease-in-out opacity-100' : 'opacity-0'}`}>

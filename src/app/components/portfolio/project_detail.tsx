@@ -39,14 +39,14 @@ export default function ProjectDetail({ project, show, closeProjectDetail }: Pro
                         <div className="font-modal-label-card">category: {project.project_category}</div>
                     </h4>
                     <div className='p-2'>
-                        <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>Description:</b> {project.description}</p>
+                        <p className='text-start font-normal text-sm lg:text-base'><b className='font-bold'>Description:</b> {project.description}</p>
                         {
                             project.tech_stacks.length > 0 ?
                                 <>
-                                    <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>Tech Stacks:</b> {typeof (project.tech_stacks) == 'string' ? project.tech_stacks : null}</p>
+                                    <p className='text-start font-normal text-sm lg:text-base'><b className='font-bold'>Tech Stacks:</b> {typeof (project.tech_stacks) == 'string' ? project.tech_stacks : null}</p>
                                     {
                                         Array.isArray(project.tech_stacks) ?
-                                            <ol className='list-decimal text-sm xl:text-base 2xl:text-lg pl-4 space-y-2'>
+                                            <ol className='list-decimal text-sm lg:text-base pl-4 space-y-2'>
                                                 {
                                                     project.tech_stacks?.map((tech_stack, index) => <li key={index} className='text-start font-normal'>{tech_stack}</li>)
                                                 }
@@ -56,14 +56,14 @@ export default function ProjectDetail({ project, show, closeProjectDetail }: Pro
                                 </>
                                 : null
                         }
-                        <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>Jobdesc:</b> {project.jobdesc}</p>
+                        <p className='text-start font-normal text-sm lg:text-base'><b className='font-bold'>Jobdesc:</b> {project.jobdesc}</p>
                         {
                             project.list_jobdescs.length > 0 ?
                                 <>
-                                    <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b className='font-bold'>List Detail Jobdesc:</b> {typeof (project.list_jobdescs) == 'string' ? project.list_jobdescs : null}</p>
+                                    <p className='text-start font-normal text-sm lg:text-base'><b className='font-bold'>List Detail Jobdesc:</b> {typeof (project.list_jobdescs) == 'string' ? project.list_jobdescs : null}</p>
                                     {
                                         Array.isArray(project.list_jobdescs) ?
-                                            <ol className='list-decimal text-sm xl:text-base 2xl:text-lg pl-4 space-y-2'>
+                                            <ol className='list-decimal text-sm lg:text-base pl-4 space-y-2'>
                                                 {
                                                     project.list_jobdescs?.map((jobdesc, index) => <li key={index} className='text-start font-normal'>{jobdesc}</li>)
                                                 }
@@ -76,7 +76,7 @@ export default function ProjectDetail({ project, show, closeProjectDetail }: Pro
                         {
                             project.documentations.length > 0 ?
                                 <>
-                                    <p className='text-start font-normal text-sm xl:text-base 2xl:text-lg'><b>Documentation:</b></p>
+                                    <p className='text-start font-normal text-sm lg:text-base'><b>Documentation:</b></p>
                                     <ProjectDocumentationCarousel project_documentations={project.documentations} />
                                 </>
                                 : null
