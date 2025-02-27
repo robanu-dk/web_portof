@@ -51,6 +51,11 @@ export default function Navbar({ contents }: NavbarProps) {
     const nav_id = contents.map((content) => content.id);
     ScrollToId(nav_id);
 
+    // run when first render
+    useEffect(() => {
+        setScroll(window.scrollY > 0);
+    }, []);
+
     return (
         <nav className={`custom-navbar ${is_scrolled ? 'scrolled' : 'unscrolled'} ${is_active ? 'show' : ''} ${is_active && is_scrolled ? 'shadow-md' : ''}`} data-spy="affix" data-offset-top="20">
             <div className="container">
