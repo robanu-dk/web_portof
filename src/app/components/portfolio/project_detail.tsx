@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import ProjectDocumentationCarousel from "./project_documentation";
 import { IoCloseSharp } from "react-icons/io5";
 
@@ -23,6 +24,15 @@ interface ProjectPrivateProps {
 }
 
 export default function ProjectDetail({ project, show, closeProjectDetail }: ProjectPrivateProps) {
+    // remove scroll bar when modal is shown
+    useEffect(() => {
+        if (show) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'scroll';
+        }
+    }, [show]);
+
     return (
         <div className={`fixed inset-0 flex items-center justify-center z-50 ${show ? 'bg-black bg-opacity-50' : 'modal-hide'}`}>
             <div className={`${show ? 'modal-show' : ''} bg-white rounded-lg shadow-lg max-w-xs w-full overflow-hidden md:max-w-2xl`}>
